@@ -1,3 +1,8 @@
+### 번역 제공 라이브러리 i18next , react-i18next
+
+changeLanguage 통해서 language 변경
+내부에서 ContextAPI를 사용해서 useTranslation 사용하는 컴포넌트 리렌더링
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
