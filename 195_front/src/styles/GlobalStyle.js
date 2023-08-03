@@ -9,6 +9,12 @@ const GlobalStyles = createGlobalStyle`
     box-sizing : border-box;
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+
   body {
     font-family : Pretendard;
     line-height : 1.5;
