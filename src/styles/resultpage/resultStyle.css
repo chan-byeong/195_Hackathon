@@ -378,3 +378,62 @@
     padding-top: 8px;
     margin-left: 15px;
 }
+
+/* -------------- CompanyList Styles ----------*/
+
+.recruitment_content{
+    position: relative;
+    display: flex;
+    margin-left: 100px;
+}
+.recruitment_content_list{
+    min-height: 800px;
+    width: 954px;
+}
+.company_list{
+    display: flex;
+    width: 100%;
+    margin: 28px 0 0 0;
+    flex-wrap: wrap;
+}
+
+.item_card{
+    width:294px;
+    height: 340px;
+    border: 1px solid #e5e6e9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.item_card_thumbnail{
+    position: relative;
+    width: 294px;
+    height: 180px;
+    background-size: 100%;
+}
+
+.thumbnail_image{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 8;
+    width: 294px;
+    height: 180px;
+}
+
+.item_card_information{
+    padding: 10px 20px 16px 20px;
+    border-top: 1px solid #f3f3f4;
+}
+
+.item_card_title{    
+    width: 250px;
+    color: #323438;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;}

@@ -1,4 +1,6 @@
 import React from 'react'
+import Filter from "../components/resultpage/Filter"
+import { CompanyList } from '../components/resultpage/CompanyList'
 
 function ResultPage() {
 
@@ -7,12 +9,11 @@ function ResultPage() {
 
     <div>
       {
-        
-        /**
-         * 해더 컴포넌트
-         * 필터 컴포넌트
-         * 결과 리스트 컴포넌트
-         */
+        <>
+        <Filter></Filter>
+        <CompanyList></CompanyList>
+
+      </>
       }
 
     </div>
