@@ -1,6 +1,6 @@
 import React from 'react'
 import Filter from "../components/resultpage/Filter"
-import { CompanyList } from '../components/resultpage/CompanyList'
+import CompanyList from '../components/resultpage/CompanyList'
 
 function ResultPage() {
 
