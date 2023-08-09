@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 // @Repository 없어도 됨. JpaRepository가 들고 있기 때문
 public interface UserRepository extends JpaRepository<User,Integer> {
 
+    public User findByUsername(String username);
 
 }
