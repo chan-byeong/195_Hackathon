@@ -28,7 +28,7 @@ public class JobPostingController {
      * @return 생성된 구직 공고의 정보와 함께 상태 코드 200을 반환. 실패 시 에러 메시지와 함께 다른 상태 코드를 반환.
      * @throws IOException 구직 공고와 관련된 파일들을 처리하면서 발생할 수 있는 입출력 예외
      */
-    @PostMapping(value = "/create_job_postings", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/create_job_posting", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<JobPosting> createJobPosting(
             @ModelAttribute JobPostingRequestBasicInfoDto basicInfoDto,
             @ModelAttribute JobPostingRequestFileDto fileDto) throws IOException {
@@ -55,7 +55,7 @@ public class JobPostingController {
      *
      * @return 조회된 JobPosting 객체 리스트의 ResponseEntity
      */
-    @GetMapping(value = "/all_job_postings")
+    @GetMapping(value = "/job_postings")
     public ResponseEntity<List<JobPosting>> getAllJobPostings() {
         List<JobPosting> jobPostings = jobPostingService.getAllJobPostings();
         return ResponseEntity.ok(jobPostings);
