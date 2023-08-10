@@ -2,6 +2,7 @@ import React from 'react'
 import {useTranslation} from 'react-i18next'
 import { Contents } from '../components/mainpage/Contents';
 import Searchbar from '../components/elements/Searchbar';
+import { Filter } from '../components/resultpage/Filter';
 
 function MainPage() {
 
@@ -21,6 +22,7 @@ function MainPage() {
       <div>{t('add')}</div>
       <div>{t('placeholder.login')}</div>
       <Searchbar/>
+      <Filter/>
       <Contents/>
     </div>
 
