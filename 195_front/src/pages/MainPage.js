@@ -9,7 +9,7 @@ function MainPage() {
 
 
   return (
-    <div>
+    <div style={{width : "1920px"}}>
       <Header/>
       <Contents/>
     </div>

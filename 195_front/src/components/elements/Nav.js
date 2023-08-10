@@ -2,6 +2,9 @@ import React,{useState} from 'react';
 import styled from 'styled-components';
 import {Link , useMatch} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
+import headerBg from "../../images/header_bg.png"
+
+import { YELLOW , BROWN } from '../../styles/common';
 
 const Nav = () => {
 
@@ -13,36 +16,53 @@ const Nav = () => {
   }
   
   return (
-    <div style={{width : "100%" , borderBottom : "1px solid #eee"}}>
+    <Wrapper>
       <NavContainer>
-        <NavLeft>
-          <NavLogo>
-            195_logo
-          </NavLogo>
-          <ul>
-            <LinkTo to='/'>{t('nav.recruitment')}</LinkTo>
-            <LinkTo to='/community'>{t('nav.community')}</LinkTo>
-            <LinkTo to='/membership'>{t('nav.membership')}</LinkTo>
-          </ul>
-        </NavLeft>
+
+        <Link to='/'>
+          <NavLogo/>
+        </Link>
+        
+
+        <NavMid>
+          <NavBtn>
+            <Link to='/'>{t('nav.recruitment')}</Link>
+          </NavBtn>
+          <NavBtn>
+            <Link to='/community'>{t('nav.community')}</Link>
+          </NavBtn>
+          <NavBtn>
+            <Link to='/membership'>{t('nav.membership')}</Link>
+          </NavBtn>
+        </NavMid>
 
         <NavRight>
-          <Link to='/login'>{t('login')}</Link>
           <Select value={selectedLang} onChange={handleLanguage}>
-            <option value='ko'>한국어</option>
-            <option value='en'>English</option>
-            <option value='cn'>漢語</option>
+              <option value='ko'>한국어</option>
+              <option value='en'>English</option>
+              <option value='cn'>漢語</option>
           </Select>
+          <LoginBtn>
+            <Link to='/login'>{t('login')}</Link>
+          </LoginBtn>
         </NavRight> 
       </NavContainer>
-    </div>
+    </Wrapper>
 
   );
 }
 
+const Wrapper = styled.div`
+  width : 1920px;
+  height : 182px;
+  background-image: url(${headerBg});
+  background-repeat:  no-repeat;
+  background-size : cover;
+`;
+
 const NavContainer = styled.div`
-  width : 1120px;
-  height : 50px;
+  width : 1640px;
+  height : 182px;
   display :flex;
   justify-content : space-between;
   align-items : center;
@@ -55,52 +75,87 @@ const NavLogo = styled.div`
   background-color : green;
   background-size: contain;
   background-position: center;
-  width : 144px;
-  height : 20px;
+  width : 234px;
+  height : 86px;
   //text-indent: -9999px;
 `;
 
-const LinkTo = ({to ,children})=>{
-  const match = useMatch(to);
-  return (
-    <li className={match ? "active":""}>
-      <Link to={to} >{children}</Link>
-    </li>
-  );
-}
-
-const NavLeft = styled.div`
+const NavMid = styled.div`
+  width : 748px;
+  height : 59px;
   display : flex;
   align-items : center;
+  justify-content : space-between;
+`;
 
-  & > ul {
-    display : flex;
+const NavBtn = styled.div`
+  width : 190px;
+  height : 44px;
+  background-color : ${YELLOW};
+  border-radius : 90px;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  display : flex;
+  align-items : center;
+  justify-content: center;
+  cursor : pointer;
 
-    & > li { //LinkTo 태그
-      margin-left : 20px;
+  & > a{
+    font-size : 26px;
+    font-weight : 700;
+    color : ${BROWN};
+  }
+`;
 
-      background-color : ${props => props.className === "active" ? "#eee" : ""};
-    }
+const LoginBtn = styled(NavBtn)`
+  background-color : ${BROWN};
+
+  & > a{
+    color : #fff;
   }
 `;
 
 const NavRight = styled.div`
+  position : relative;
 
-
-& > a {
-
-  margin-right : 15px;
-}
+  & > a {
+    margin-right : 15px;
+  }
 `;
 
 const Select = styled.select`
-  width : 100px;
-  height : 25px;
-  padding : 3px 12px;
+  border : none;
   outline : none;
+  //appearance: none;
+  //-webkit-appearance: none;
+
+  width : 109px;
+  height : 35px;
+  font-size : 16px;
+  text-align : center;
+  display : block;
+  cursor : pointer;
+  position : absolute;
+  top : -45px;
+  left : 42px;
+
+  background-color : transparent;
+  border-bottom : 1px solid ${BROWN};
+
+  &::after {
+    content : ">"; 
+    display : block;
+    position : absolute;
+    right : 10px;
+  }
+  &:focus {
+    outline : none;
+  }
 
   & > option {
-    background-color : #fff;
+    background-color : ${YELLOW};
+    &:hover {
+      background-color : #eee;
+    }
   }
 `; 
 

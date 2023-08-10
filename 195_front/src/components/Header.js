@@ -7,14 +7,9 @@ import Searchbar from "./elements/Searchbar";
 const Header = () => {
 
 
-
-
-
-
   return(
     <header className='header-container'>
       <Nav/>
-      <Searchbar/>
       {/**
        * Navigation Bar
        * Search Bar
