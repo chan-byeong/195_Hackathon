@@ -20,6 +20,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -138,5 +139,25 @@ public class JobPostingService {
         } catch (IOException e) {
             throw new ImageUploadException("이미지 업로드 중 에러 발생: " + e.getMessage(), e);
         }
+    }
+
+    /**
+     * 주어진 ID에 해당하는 JobPosting 객체를 조회하는 메서드입니다.
+     *
+     * @param id 조회할 JobPosting의 ID
+     * @return 조회된 JobPosting 객체, 없을 경우 null 반환
+     */
+    public JobPosting getOneJobPosting(Long id) {
+        Optional<JobPosting> jobPostingOptional = jobPostingRepository.findById(id);
+        return jobPostingOptional.orElse(null);
+    }
+
+    /**
+     * 모든 구직 공고(JobPosting)를 조회합니다.
+     *
+     * @return 조회된 구직 공고 리스트, 구직 공고가 없을 경우 빈 리스트 반환
+     */
+    public List<JobPosting> getAllJobPostings() {
+        return jobPostingRepository.findAll();
     }
 }
