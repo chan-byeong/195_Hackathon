@@ -2,6 +2,7 @@ import {BrowserRouter,Routes , Route} from 'react-router-dom'
 import GlobalStyles from './styles/GlobalStyle';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
+import ResultPage from './pages/ResultPage';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <GlobalStyles/> 
         <Routes>
           <Route path="/" element={<MainPage/>}/>
-          <Route path="/result" element={<DetailPage/>}/>
+          <Route path="/result" element={<ResultPage/>}/>
           <Route path="/login" element={<div>LOGIN</div>}/>
           <Route path="/search" element={<DetailPage/>}/>
         </Routes>

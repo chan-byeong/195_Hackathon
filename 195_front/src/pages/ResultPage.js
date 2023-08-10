@@ -9,10 +9,9 @@ function ResultPage() {
 
     <div>
       {
-        <>
+      <>
         <Filter></Filter>
         <CompanyList></CompanyList>
-
       </>
       }
 
