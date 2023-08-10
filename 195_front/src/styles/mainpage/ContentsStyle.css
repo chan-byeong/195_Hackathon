@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.container {
+  background-color: #eee;
+}
+
 .main-contianer {
   width: 1120px;
   height: 100%;
@@ -6,7 +10,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding-top: 60px;
+  padding-top: 40px;
+
 }
 
 .title {
@@ -28,6 +33,15 @@
   padding: 10px;
   text-align: center;
   height: 200px;
+
+  & > a {
+    display: block;
+    height: 100%;
+    background-image: url("../../images/logo512.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+  }
 }
 .item-1 {
   grid-column: span 2;
@@ -35,13 +49,4 @@
 .item-2 {
   grid-row: span 2;
   height: 411px;
-}
-
-a {
-  display: block;
-  height: 100%;
-  background-image: url("../../images/logo512.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
 }

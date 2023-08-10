@@ -8,7 +8,7 @@ export const Contents = () => {
   const {t} = useTranslation('main');
 
   return (
-    <>
+    <div className='container'>
     <div className="main-contianer">
       <h1 className='title'>{t('tips')}</h1>
 
@@ -38,6 +38,6 @@ export const Contents = () => {
       </div>
 
     </div>
-    </>
+    </div>
   );
 }
