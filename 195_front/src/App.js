@@ -10,6 +10,7 @@ function App() {
         <GlobalStyles/> 
         <Routes>
           <Route path="/" element={<MainPage/>}/>
+          <Route path="/result" element={<DetailPage/>}/>
           <Route path="/login" element={<div>LOGIN</div>}/>
           <Route path="/search" element={<DetailPage/>}/>
         </Routes>
