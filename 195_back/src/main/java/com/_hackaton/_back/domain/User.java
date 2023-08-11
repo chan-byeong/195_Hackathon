@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
 
-@Entity
+@Entity(name = "users")
 @Data
 @NoArgsConstructor
 public class User {
