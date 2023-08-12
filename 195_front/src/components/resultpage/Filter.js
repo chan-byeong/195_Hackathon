@@ -8,6 +8,7 @@ export const Filter = () => {
     const [wage, setWage] = useState(false);
     const [accomo, setAccomo] = useState(false);
     const [rangeValue, setRangeValue] = useState(0);
+    const [formatedValue, setFormatedValue] = useState(0);
 
     const Clicked_job = () => { setJob(!job); }
     const showJobPage = () => {
@@ -17,22 +18,50 @@ export const Filter = () => {
                 <div className="pannel_body">
                     <div className="filter_depth1">
                         <ul>
-                            <li className="job_content"><button className="filter_depth1_btn f_b1">전체</button></li>
-                            <li className="job_content"><button className="filter_depth1_btn f_b1">제조업</button></li>
-                            <li className="job_content"><button className="filter_depth1_btn f_b1">건설업</button></li>
-                            <li className="job_content"><button className="filter_depth1_btn f_b1">서비스업</button></li>
-                            <li className="job_content"><button className="filter_depth1_btn f_b1">농축산업</button></li>
-                            <li className="job_content"><button className="filter_depth1_btn f_b1">어업</button></li>
+                            <li className="job_content">
+                                <label className="custom-checkbox">
+                                    <input type="checkbox"></input>
+                                    <span className="text_color">제조업</span>
+                                </label>
+                            </li>
+
+                            <li className="job_content">
+                                <label className="custom-checkbox">
+                                    <input type="checkbox"></input>
+                                    <span className="text_color">건설업</span>
+                                </label>
+                            </li>
+
+                            <li className="job_content">
+                                <label className="custom-checkbox">
+                                    <input type="checkbox"></input>
+                                    <span className="text_color">서비스업</span>
+                                </label>
+                            </li>
+
+                            <li className="job_content">
+                                <label className="custom-checkbox">
+                                    <input type="checkbox" ></input>
+                                    <span className="text_color">농축산업</span>
+                                </label>
+                            </li>
+
+                            <li className="job_content">
+                                <label className="custom-checkbox">
+                                    <input type="checkbox"></input>
+                                    <span className="text_color">어업</span>
+                                </label>
+                            </li>
                         </ul>
                     </div>
-                    <div className="filter_depth2">
+                    {/*<div className="filter_depth2">
                         <div className="search_detail_empty">
                             <div className="empty_container">
                                 <p className="f_b1">❌
                                     <br></br>나에게 맞는 직종을 선택해주세요</p>
                             </div>
                         </div>
-                    </div>
+        </div>*/}
                 </div>
 
                 <div className="pannel_bottom">
@@ -51,28 +80,35 @@ export const Filter = () => {
             <div className="clicked_loc">
                 <div className="Loc_body">
                     <div className="item_list">
-                        <ul>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>가평군</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>과천시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>광명시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>광주시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>구리시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>군포시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>권선구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>기흥구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>김포시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>남양주시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>단원구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>동두천시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>동안구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>만안구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>부천시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>분당구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>상록구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>수정구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>수지구</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>시흥시</span></label></li>
-                            <li className="item_loc"><label className="loc_checkbox"><input type="checkbox"></input><span>안성시</span></label></li>
+                        <ul className="centered_list">
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>고양시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>과천시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>광명시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>광주시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>구리시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>군포시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>김포시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>남양주</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>동두천</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>부천시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>성남시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>수원시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>시흥시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>안산시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>안성시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>안양시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>양주시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>여주시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>오산시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>용인시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>의왕시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>의정부</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>이천시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>파주시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>평택시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>포천시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>하남시</span></label>
+                            <label className="loc_checkbox custom-checkbox"><input type="checkbox"></input><span>화성시</span></label>
                         </ul>
 
                     </div>
@@ -87,33 +123,36 @@ export const Filter = () => {
     }
 
     const RangeHandler = (e) => {
-        const value = parseInt(e.target.value);
-        setRangeValue(value);
+        const value2 = parseInt(e.target.value);
+        setRangeValue(value2);
+        setFormatedValue(value2.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 
     }
 
-    const Clicked_Wage = () => { setWage(!wage);  }
+    const Clicked_Wage = () => { setWage(!wage); }
     const showWagePage = () => {
         return (wage ?
             <div className="clicked_wage">
                 <div className="wage_body">
                     <div className="wage_title">
-                        <div className="center">전체</div>
+                        <div className="center">월급</div>
+                        <div className="unit_won" >단위:₩</div>
+
                     </div>
 
                     <div>
                         <div className="wage_slide">
-                            <div className="left"><p className="p_style">신입</p></div>
-                            <div className="right">10년+</div>
+                            <div className="left"><p className="p_style">0</p></div>
+                            <div className="right">5M+</div>
                         </div>
 
                     </div>
 
 
                     <div className="wage_slidebar">
-                        <div className="center">
-                            <input onChange={RangeHandler} className="custom_range" type="range" min="1" max="10" value={rangeValue}></input>
-                            <div className="wage_result">{rangeValue}년</div>
+                        <div className="slide_center">
+                            <input onChange={RangeHandler} className="custom_range" type="range" min="1" max="5000000" value={rangeValue}></input>
+                            <div className="wage_result">{formatedValue} ₩</div>
                         </div>
                     </div>
 
@@ -177,7 +216,8 @@ export const Filter = () => {
                     {showWagePage()}
                     <button className="btn_filter" onClick={Clicked_Accomo}><li className="filter_content">숙식제공</li></button>
                     {showAccomoPage()}
-                    <div className="reset_div"><button className="reset">🔄️Reset</button></div>
+                    <button className="app_style">적용</button>
+                    <div className="reset_div"><button className="reset">🔄️reset</button></div>
                 </ul>
 
             </div>
