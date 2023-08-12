@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class BusinessConfirmController {
 
@@ -17,9 +18,10 @@ public class BusinessConfirmController {
     private BusinessConfirmService businessConfirmService;
 
 
-    /*
+    /**
      *
      * 사업자 유효성 검사
+     * notion 참고
      *
      */
     @RequestMapping(value = "/api/business-confirm", method = RequestMethod.POST)
@@ -27,5 +29,11 @@ public class BusinessConfirmController {
     public String getCurrentUser(@RequestBody BusinessConfirmDto data) throws Exception {
 
         return businessConfirmService.BusinessConfirmApiRequest(data);
+    }
+
+    @RequestMapping(value = "/api/hi", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public String getHi(){
+        return "안녕";
     }
 }

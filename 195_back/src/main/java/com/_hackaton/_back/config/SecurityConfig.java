@@ -39,7 +39,6 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/afterLogin") //로그인 성공시 주소
                 .and()
                 .oauth2Login()
-                .loginPage("/loginForm")
                 .defaultSuccessUrl("/") //로그인 성공시 주소
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService);//구글 로그인이 완료된 뒤 후처리가 필요함. Tip 코드x,(엑세스토큰+사용자프로필정보O)

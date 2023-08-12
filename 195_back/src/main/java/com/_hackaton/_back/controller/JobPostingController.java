@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -28,7 +30,7 @@ public class JobPostingController {
      * @return 생성된 구직 공고의 정보와 함께 상태 코드 200을 반환. 실패 시 에러 메시지와 함께 다른 상태 코드를 반환.
      * @throws IOException 구직 공고와 관련된 파일들을 처리하면서 발생할 수 있는 입출력 예외
      */
-    @PostMapping(value = "/create_job_posting", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/create_job_posting", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<JobPosting> createJobPosting(
             @ModelAttribute JobPostingRequestBasicInfoDto basicInfoDto,
             @ModelAttribute JobPostingRequestFileDto fileDto) throws IOException {

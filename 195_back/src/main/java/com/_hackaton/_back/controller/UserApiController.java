@@ -18,6 +18,8 @@ import javax.websocket.Session;
 import java.util.List;
 import java.util.Map;
 
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class UserApiController {
 
