@@ -78,13 +78,14 @@ public class JobPostingService {
         jobPosting.setCompanyName(requestDto.getCompanyName());
         jobPosting.setPhoneNumber(requestDto.getPhoneNumber());
         jobPosting.setSector(requestDto.getSector());
-        jobPosting.setRegion(requestDto.getRegion());
+        jobPosting.setCity(requestDto.getCity());
         jobPosting.setDetailAddress(requestDto.getDetailAddress());
         jobPosting.setEmploymentPeriod(requestDto.getEmploymentPeriod());
         jobPosting.setWorkDays(requestDto.getWorkDays());
         jobPosting.setWorkHours(requestDto.getWorkHours());
         jobPosting.setSalary(requestDto.getSalary());
-        jobPosting.setProvideAccommodation(requestDto.isProvideAccommodation());
+        jobPosting.setAccommodationProvided(requestDto.isAccommodationProvided());
+        jobPosting.setFoodProvided(requestDto.isFoodProvided());
         // to-do
         // ProfileImage, CompanyImages, Details 처리
 

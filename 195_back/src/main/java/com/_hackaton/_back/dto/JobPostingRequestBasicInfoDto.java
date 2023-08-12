@@ -10,11 +10,12 @@ public class JobPostingRequestBasicInfoDto {
     private String companyName;
     private String phoneNumber;
     private String sector;
-    private String region;
+    private String city;
     private String detailAddress;
     private String employmentPeriod;
     private String workDays;
     private String workHours;
     private int salary;
-    private boolean provideAccommodation;
+    private boolean isFoodProvided;
+    private boolean isAccommodationProvided;
 }
