@@ -9,43 +9,46 @@
 <h1>구직 공고 생성</h1>
 <form id="jobPostingForm">
   <label>회사 이름:</label><br>
-  <input type="text" name="companyName"><br><br>
+  <input type="text" name="companyName" required><br><br>
 
   <label>전화번호:</label><br>
-  <input type="text" name="phoneNumber"><br><br>
+  <input type="text" name="phoneNumber" required><br><br>
 
   <label>프로필 이미지:</label><br>
-  <input type="file" id="profileImage" name="profileImage" multiple><br><br>
+  <input type="file" id="profileImage" name="profileImage" multiple required><br><br>
 
   <label>업종:</label><br>
-  <input type="text" name="sector"><br><br>
+  <input type="text" name="sector" required><br><br>
 
   <label>지역:</label><br>
-  <input type="text" name="region"><br><br>
+  <input type="text" name="city" required><br><br>
 
   <label>회사 이미지:</label><br>
-  <input type="file" id="companyImages" name="companyImages" multiple><br><br>
+  <input type="file" id="companyImages" name="companyImages" multiple required><br><br>
 
   <label>상세 주소:</label><br>
-  <input type="text" name="detailAddress"><br><br>
+  <input type="text" name="detailAddress" required><br><br>
 
   <label>고용 기간:</label><br>
-  <input type="text" name="employmentPeriod"><br><br>
+  <input type="text" name="employmentPeriod" required><br><br>
 
   <label>근무일:</label><br>
-  <input type="text" name="workDays"><br><br>
+  <input type="text" name="workDays" required><br><br>
 
   <label>근무시간:</label><br>
-  <input type="text" name="workHours"><br><br>
+  <input type="text" name="workHours" required><br><br>
 
   <label>세부사항:</label><br>
-  <input type="file" id="details" name="details" multiple><br><br>
+  <input type="file" id="details" name="details" multiple required><br><br>
 
   <label>월급:</label><br>
-  <input type="number" name="salary"><br><br>
+  <input type="number" name="salary" required><br><br>
 
   <label>숙박 제공:</label><br>
-  <input type="checkbox" name="provideAccommodation"><br><br>
+  <input type="checkbox" name="isAccommodationProvided"><br><br>
+
+  <label>식사 제공:</label><br>
+  <input type="checkbox" name="isFoodProvided"><br><br>
 
   <button type="button" onclick="submitJobPosting()">구직 공고 생성</button>
 </form>
@@ -55,8 +58,15 @@
       const form = document.getElementById('jobPostingForm');
       const formData = new FormData(form);
 
+      const isAccommodationProvided = form.isAccommodationProvided.checked;
+      const isFoodProvided = form.isFoodProvided.checked;
+
+      // FormData에 값 추가
+      formData.set('isAccommodationProvided', isAccommodationProvided);
+      formData.set('isFoodProvided', isFoodProvided);
+
       try {
-        const response = await fetch('/job-postings', {
+        const response = await fetch('/api/create-job-posting', {
           method: 'POST',
           body: formData,
         });
@@ -72,6 +82,6 @@
         console.error('구직 공고 생성에 실패했습니다.', error);
       }
     }
-  </script>
+</script>
 </body>
 </html>
