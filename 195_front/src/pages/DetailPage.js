@@ -1,13 +1,13 @@
 import React from 'react'
-import Header from '../components/Header'
 import Details from '../components/detailpage/Details'
 
 import styled from 'styled-components';
+import Nav from '../components/elements/Nav';
 
 function DetailPage() {
   return (
    <>
-    <Header/>
+    <Nav main={false}/>
     <Details/>
    </>
   )

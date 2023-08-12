@@ -10,10 +10,6 @@ const Header = () => {
   return(
     <header className='header-container'>
       <Nav/>
-      {/**
-       * Navigation Bar
-       * Search Bar
-       */}
     </header>
   );
 }

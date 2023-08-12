@@ -4,6 +4,7 @@ import CompanyList from '../components/resultpage/CompanyList'
 
 function ResultPage() {
 
+  
 
   return (
 

@@ -3,6 +3,7 @@ import GlobalStyles from './styles/GlobalStyle';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
 import ResultPage from './pages/ResultPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage/>}/>
           <Route path="/result" element={<ResultPage/>}/>
-          <Route path="/login" element={<div>LOGIN</div>}/>
+          <Route path="/login" element={<LoginPage/>}/>
           <Route path="/search" element={<DetailPage/>}/>
         </Routes>
       </BrowserRouter>
