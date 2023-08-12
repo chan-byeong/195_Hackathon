@@ -86,9 +86,6 @@ public class JobPostingService {
         jobPosting.setSalary(requestDto.getSalary());
         jobPosting.setAccommodationProvided(requestDto.isAccommodationProvided());
         jobPosting.setFoodProvided(requestDto.isFoodProvided());
-        // to-do
-        // ProfileImage, CompanyImages, Details 처리
-
         //데이터베이스에 들어가기 전에 공고 별로 각각의 유일한 폴더를 생성하기 위한 폴더명 생성
         String folderName = UUID.randomUUID().toString() + "/";
         jobPosting.setProfileImage(uploadImagesToCloud(fileDto.getProfileImage(), folderName + "ProfileImage/"));
