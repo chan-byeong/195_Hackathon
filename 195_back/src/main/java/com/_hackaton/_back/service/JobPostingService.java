@@ -1,6 +1,7 @@
 package com._hackaton._back.service;
 
 import com._hackaton._back.domain.JobPosting;
+import com._hackaton._back.domain.QJobPosting;
 import com._hackaton._back.dto.JobPostingRequestBasicInfoDto;
 import com._hackaton._back.dto.JobPostingRequestFileDto;
 import com._hackaton._back.exception.EmptyImageListException;
@@ -10,6 +11,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.querydsl.core.BooleanBuilder;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,6 +32,7 @@ public class JobPostingService {
 
     private final AmazonS3 amazonS3;
     private final JobPostingRepository jobPostingRepository;
+    private final JPAQueryFactory jpaQueryFactory;
 
 
     @Value("${aws.s3.endPoint}")
@@ -78,13 +82,14 @@ public class JobPostingService {
         jobPosting.setCompanyName(requestDto.getCompanyName());
         jobPosting.setPhoneNumber(requestDto.getPhoneNumber());
         jobPosting.setSector(requestDto.getSector());
-        jobPosting.setRegion(requestDto.getRegion());
+        jobPosting.setCity(requestDto.getCity());
         jobPosting.setDetailAddress(requestDto.getDetailAddress());
         jobPosting.setEmploymentPeriod(requestDto.getEmploymentPeriod());
         jobPosting.setWorkDays(requestDto.getWorkDays());
         jobPosting.setWorkHours(requestDto.getWorkHours());
         jobPosting.setSalary(requestDto.getSalary());
-        jobPosting.setProvideAccommodation(requestDto.isProvideAccommodation());
+        jobPosting.setAccommodationProvided(requestDto.isAccommodationProvided());
+        jobPosting.setFoodProvided(requestDto.isFoodProvided());
         // to-do
         // ProfileImage, CompanyImages, Details 처리
 
@@ -159,5 +164,39 @@ public class JobPostingService {
      */
     public List<JobPosting> getAllJobPostings() {
         return jobPostingRepository.findAll();
+    }
+
+    public List<JobPosting> findJobs(List<String> city, List<String> sector, Integer minSalary, Integer maxSalary, Boolean isFoodProvided, Boolean isAccommodationProvided) {
+        QJobPosting jobPosting = QJobPosting.jobPosting; // QJobPosting은 QueryDSL에서 생성된 엔터티에 대한 Query 타입입니다.
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if (city != null && !city.isEmpty()) {
+            builder.and(jobPosting.city.in(city));
+        }
+
+        if (sector != null && !sector.isEmpty()) {
+            builder.and(jobPosting.sector.in(sector));
+        }
+
+        if (minSalary != null) {
+            builder.and(jobPosting.salary.goe(minSalary)); // salary가 minSalary보다 크거나 같은 경우
+        }
+
+        if (maxSalary != null) {
+            builder.and(jobPosting.salary.loe(maxSalary)); // salary가 maxSalary보다 작거나 같은 경우
+        }
+
+        if (isFoodProvided != null) {
+            builder.and(jobPosting.isFoodProvided.eq(isFoodProvided));
+        }
+
+        if (isAccommodationProvided != null) {
+            builder.and(jobPosting.isAccommodationProvided.eq(isAccommodationProvided));
+        }
+
+        return jpaQueryFactory
+                .selectFrom(jobPosting)
+                .where(builder)
+                .fetch();
     }
 }
