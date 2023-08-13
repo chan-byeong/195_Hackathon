@@ -18,6 +18,7 @@ public class JobPosting {
     @GeneratedValue
     private Long id;
     private String companyName; //회사이름
+    private String companyName_en; //회사이름
     private String phoneNumber; //전화번호
 
     @ElementCollection //기본 데이터 타입(String,Integer)의 리스트 일 때 붙여줘야 함
@@ -28,6 +29,7 @@ public class JobPosting {
     @ElementCollection
     private List<String> companyImages;
     private String detailAddress;
+    private String detailAddress_en;
     private String employmentPeriod;
     private String workDays;
     private String workHours;

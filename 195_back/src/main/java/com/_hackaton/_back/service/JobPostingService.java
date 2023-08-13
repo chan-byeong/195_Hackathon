@@ -47,25 +47,6 @@ public class JobPostingService {
         urlTemplate = endPoint + "/" + bucketName + "/";
     }
 
-
-    public List<String> listImagesInFolder(String folderName) {
-        // 폴더에 해당하는 Prefix로 객체 리스트를 가져옴
-        ObjectListing objectListing = amazonS3.listObjects(bucketName, folderName);
-
-        // 폴더 내의 모든 이미지 정보를 저장할 리스트
-        List<String> imageUrls = new ArrayList<>();
-
-        String imageUrlTemplate =  endPoint + "/" + bucketName + "/";
-
-        // 객체 리스트에서 각 객체의 키(파일 경로)를 가져와 URL을 생성
-        objectListing.getObjectSummaries().forEach(objectSummary -> {
-            String imageUrl = imageUrlTemplate + objectSummary.getKey();
-            imageUrls.add(imageUrl);
-        });
-
-        return imageUrls;
-    }
-
     /**
      * 새로운 구직 공고를 데이터베이스에 저장합니다.
      *
@@ -76,10 +57,12 @@ public class JobPostingService {
     public JobPosting createJobPosting(JobPostingRequestBasicInfoDto requestDto, JobPostingRequestFileDto fileDto){
         JobPosting jobPosting = new JobPosting();
         jobPosting.setCompanyName(requestDto.getCompanyName());
+        jobPosting.setCompanyName_en(requestDto.getCompanyName_en());
         jobPosting.setPhoneNumber(requestDto.getPhoneNumber());
         jobPosting.setSector(requestDto.getSector());
         jobPosting.setCity(requestDto.getCity());
         jobPosting.setDetailAddress(requestDto.getDetailAddress());
+        jobPosting.setDetailAddress_en(requestDto.getDetailAddress_en());
         jobPosting.setEmploymentPeriod(requestDto.getEmploymentPeriod());
         jobPosting.setWorkDays(requestDto.getWorkDays());
         jobPosting.setWorkHours(requestDto.getWorkHours());
