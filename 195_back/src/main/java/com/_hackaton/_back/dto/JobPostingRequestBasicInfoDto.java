@@ -18,4 +18,21 @@ public class JobPostingRequestBasicInfoDto {
     private int salary;
     private boolean isFoodProvided;
     private boolean isAccommodationProvided;
+
+    @Override
+    public String toString() {
+        return "JobPostingRequestBasicInfoDto{" +
+                "companyName='" + companyName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", sector='" + sector + '\'' +
+                ", city='" + city + '\'' +
+                ", detailAddress='" + detailAddress + '\'' +
+                ", employmentPeriod='" + employmentPeriod + '\'' +
+                ", workDays='" + workDays + '\'' +
+                ", workHours='" + workHours + '\'' +
+                ", salary=" + salary +
+                ", isFoodProvided=" + isFoodProvided +
+                ", isAccommodationProvided=" + isAccommodationProvided +
+                '}';
+    }
 }
