@@ -51,9 +51,27 @@
   <input type="checkbox" name="isFoodProvided"><br><br>
 
   <button type="button" onclick="submitJobPosting()">구직 공고 생성</button>
+  <button type="button" onclick="printFormData()">formData 내용 출력</button>
 </form>
 
 <script>
+    function printFormData() {
+      const form = document.getElementById('jobPostingForm');
+      const formData = new FormData(form);
+
+      const isAccommodationProvided = form.isAccommodationProvided.checked;
+      const isFoodProvided = form.isFoodProvided.checked;
+
+      // FormData에 값 추가
+      formData.set('isAccommodationProvided', isAccommodationProvided);
+      formData.set('isFoodProvided', isFoodProvided);
+
+      // formData 내용 출력
+      for (const [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
+    }
+
     async function submitJobPosting() {
       const form = document.getElementById('jobPostingForm');
       const formData = new FormData(form);
