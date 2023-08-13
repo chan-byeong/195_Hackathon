@@ -32,6 +32,8 @@ public class SecurityConfig {
                 .antMatchers("/ceo/**").authenticated() //이 주소로 들어오면 인증이 필요. 컨트롤러에서 @Secured("ROLE_ADMIN") 등으로 설정 가능
                 .anyRequest().permitAll() // 해당 url이 아닌 경우 모두 허용한다는 코드
                 .and()
+                .headers().frameOptions().disable() // 이 부분에서 추가
+                .and()
                 .formLogin()//일반적인 로그인 방식의 성공, 실패처리를 사용
                 //.usernameParameter("setusernamepar")
                 .loginPage("/loginForm") //사용자가 따로 만든 로그인 페이지를 사용하려고 할때 설정한다.

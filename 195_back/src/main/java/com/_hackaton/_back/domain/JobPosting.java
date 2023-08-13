@@ -23,7 +23,7 @@ public class JobPosting {
     @ElementCollection //기본 데이터 타입(String,Integer)의 리스트 일 때 붙여줘야 함
     private List<String> profileImage; //기업이미지
     private String sector; //
-    private String region;
+    private String city;
 
     @ElementCollection
     private List<String> companyImages;
@@ -35,7 +35,8 @@ public class JobPosting {
     @ElementCollection
     private List<String> details;
     private int salary;
-    private boolean provideAccommodation;
+    private boolean isAccommodationProvided;
+    private boolean isFoodProvided;
 
 
 }

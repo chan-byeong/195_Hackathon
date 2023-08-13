@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구직 공고 검색</title>
+</head>
+<body>
+<h1>구직 공고 검색</h1>
+
+<form id="searchForm">
+    <label>지역:</label>
+    <input type="text" name="city" placeholder="수원시, 성남시"><br><br>
+
+    <label>업종:</label>
+    <input type="text" name="sector" placeholder="제조업, 건설업"><br><br>
+
+    <label>최소 연봉:</label>
+    <input type="number" name="minSalary"><br><br>
+
+    <label>최대 연봉:</label>
+    <input type="number" name="maxSalary"><br><br>
+
+    <label>식사 제공:</label>
+    <input type="checkbox" name="isFoodProvided" value="true"><br><br>
+
+    <label>숙소 제공:</label>
+    <input type="checkbox" name="isAccommodationProvided" value="true"><br><br>
+
+    <button type="button" onclick="searchJobs()">검색</button>
+</form>
+
+<div id="jobResults"></div>
+
+<script>
+    async function searchJobs() {
+      const form = document.getElementById('searchForm');
+      let url = '/api/filtered-job-postings?';
+
+      if (form.city.value) url += 'city=' + form.city.value + '&';
+      if (form.sector.value) url += 'sector=' + form.sector.value + '&';
+      if (form.minSalary.value) url += 'minSalary=' + form.minSalary.value + '&';
+      if (form.maxSalary.value) url += 'maxSalary=' + form.maxSalary.value + '&';
+      if (form.isFoodProvided.checked) url += 'isFoodProvided=' + form.isFoodProvided.checked + '&';
+      if (form.isAccommodationProvided.checked) url += 'isAccommodationProvided=' + form.isAccommodationProvided.checked + '&';
+
+      // 맨 끝의 & 제거
+      url = url.slice(0, -1);
+
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+        });
+
+        const results = await response.json();
+        const resultDiv = document.getElementById('jobResults');
+
+        resultDiv.innerHTML = results.map(job => `
+          <h3>${job.companyName}</h3>
+          <p>${job.sector}</p>
+          <p>${job.city}</p>
+          <p>${job.salary}원</p>
+          <p>숙박 제공: ${job.isAccommodationProvided ? '제공' : '미제공'}</p>
+          <p>식사 제공: ${job.isFoodProvided ? '제공' : '미제공'}</p>
+        `).join('');
+      } catch (error) {
+        console.error('구직 공고 검색에 실패했습니다.', error);
+      }
+    }
+</script>
+</body>
+</html>

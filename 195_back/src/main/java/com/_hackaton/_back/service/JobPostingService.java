@@ -78,16 +78,14 @@ public class JobPostingService {
         jobPosting.setCompanyName(requestDto.getCompanyName());
         jobPosting.setPhoneNumber(requestDto.getPhoneNumber());
         jobPosting.setSector(requestDto.getSector());
-        jobPosting.setRegion(requestDto.getRegion());
+        jobPosting.setCity(requestDto.getCity());
         jobPosting.setDetailAddress(requestDto.getDetailAddress());
         jobPosting.setEmploymentPeriod(requestDto.getEmploymentPeriod());
         jobPosting.setWorkDays(requestDto.getWorkDays());
         jobPosting.setWorkHours(requestDto.getWorkHours());
         jobPosting.setSalary(requestDto.getSalary());
-        jobPosting.setProvideAccommodation(requestDto.isProvideAccommodation());
-        // to-do
-        // ProfileImage, CompanyImages, Details 처리
-
+        jobPosting.setAccommodationProvided(requestDto.isAccommodationProvided());
+        jobPosting.setFoodProvided(requestDto.isFoodProvided());
         //데이터베이스에 들어가기 전에 공고 별로 각각의 유일한 폴더를 생성하기 위한 폴더명 생성
         String folderName = UUID.randomUUID().toString() + "/";
         jobPosting.setProfileImage(uploadImagesToCloud(fileDto.getProfileImage(), folderName + "ProfileImage/"));
@@ -159,5 +157,22 @@ public class JobPostingService {
      */
     public List<JobPosting> getAllJobPostings() {
         return jobPostingRepository.findAll();
+    }
+
+    /**
+     * 사용자가 지정한 조건에 맞는 구직 공고(JobPosting)를 조회합니다.
+     * 조건은 도시, 업종, 최소 연봉, 최대 연봉, 식사 제공 여부, 숙소 제공 여부에 따라 필터링될 수 있으며,
+     * 각 조건은 선택 사항입니다.
+     *
+     * @param city 구직 공고 필터링에 필요한 도시 목록, null일 경우 도시로 필터링하지 않음
+     * @param sector 구직 공고 필터링에 필요한 업종 목록, null일 경우 업종으로 필터링하지 않음
+     * @param minSalary 구직 공고 필터링에 필요한 최소 연봉, null일 경우 최소 연봉으로 필터링하지 않음
+     * @param maxSalary 구직 공고 필터링에 필요한 최대 연봉, null일 경우 최대 연봉으로 필터링하지 않음
+     * @param isFoodProvided 구직 공고 필터링에 필요한 식사 제공 여부, null일 경우 식사 제공 여부로 필터링하지 않음
+     * @param isAccommodationProvided 구직 공고 필터링에 필요한 숙소 제공 여부, null일 경우 숙소 제공 여부로 필터링하지 않음
+     * @return 필터링된 구직 공고의 리스트, 조건에 맞는 구직 공고가 없을 경우 빈 리스트 반환
+     */
+    public List<JobPosting> findJobs(List<String> city, List<String> sector, Integer minSalary, Integer maxSalary, Boolean isFoodProvided, Boolean isAccommodationProvided) {
+        return jobPostingRepository.findJobs(city, sector, minSalary, maxSalary, isFoodProvided, isAccommodationProvided);
     }
 }
