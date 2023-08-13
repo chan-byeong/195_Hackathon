@@ -29,13 +29,13 @@ public class JobPostingController {
      * @throws IOException 구직 공고와 관련된 파일들을 처리하면서 발생할 수 있는 입출력 예외
      */
     @PostMapping(value = "/create-job-posting", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<JobPosting> createJobPosting(
+    public ResponseEntity<Long> createJobPosting(
             @ModelAttribute JobPostingRequestBasicInfoDto basicInfoDto,
             @ModelAttribute JobPostingRequestFileDto fileDto) throws IOException {
 
         JobPosting jobPosting = jobPostingService.createJobPosting(basicInfoDto, fileDto);
 
-        return ResponseEntity.ok(jobPosting);
+        return ResponseEntity.ok(jobPosting.getId());
     }
 
     /**
