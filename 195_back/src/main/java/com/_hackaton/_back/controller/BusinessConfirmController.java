@@ -26,10 +26,26 @@ public class BusinessConfirmController {
      */
     @RequestMapping(value = "/api/business-confirm", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
-    public String getCurrentUser(@RequestBody BusinessConfirmDto data) throws Exception {
+    public String businessConfirm(@RequestBody BusinessConfirmDto data) throws Exception {
 
         return businessConfirmService.BusinessConfirmApiRequest(data);
     }
+
+    @RequestMapping(value = "/api/business-confirm-CEO", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void businessConfirmOk(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        principalDetails.getUser().setRole("ROLE_CEO");
+
+    }
+    @RequestMapping(value = "/api/business-confirm-COMMON", method = RequestMethod.GET)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void businessConfirmCommon(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+        principalDetails.getUser().setRole("ROLE_COMMON");
+
+    }
+
 
     @RequestMapping(value = "/api/hi", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
