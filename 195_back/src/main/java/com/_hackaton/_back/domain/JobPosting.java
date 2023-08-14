@@ -17,6 +17,7 @@ public class JobPosting {
     @Id
     @GeneratedValue
     private Long id;
+    private String title; //공고제목
     private String companyName; //회사이름
     private String companyName_en; //회사이름
     private String phoneNumber; //전화번호

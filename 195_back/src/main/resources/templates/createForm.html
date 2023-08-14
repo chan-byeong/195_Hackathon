@@ -8,11 +8,21 @@
 <body>
 <h1>구직 공고 생성</h1>
 <form id="jobPostingForm">
+
+  <label>공고 제목:</label><br>
+  <input type="text" name="title" required><br><br>
+
   <label>회사 이름(한글):</label><br>
   <input type="text" name="companyName" required><br><br>
 
   <label>회사 이름(영어):</label><br>
   <input type="text" name="companyName_en" required><br><br>
+
+  <label>숙박 제공:</label><br>
+  <input type="checkbox" name="isAccommodationProvided" value="true"><br><br>
+
+  <label>식사 제공:</label><br>
+  <input type="checkbox" name="isFoodProvided" value="true"><br><br>
 
   <label>전화번호:</label><br>
   <input type="text" name="phoneNumber" required><br><br>
@@ -50,12 +60,6 @@
   <label>월급:</label><br>
   <input type="number" name="salary" required><br><br>
 
-  <label>숙박 제공:</label><br>
-  <input type="checkbox" name="isAccommodationProvided"><br><br>
-
-  <label>식사 제공:</label><br>
-  <input type="checkbox" name="isFoodProvided"><br><br>
-
   <button type="button" onclick="submitJobPosting()">구직 공고 생성</button>
   <button type="button" onclick="printFormData()">formData 내용 출력</button>
 </form>
@@ -64,13 +68,6 @@
     function printFormData() {
       const form = document.getElementById('jobPostingForm');
       const formData = new FormData(form);
-
-      const isAccommodationProvided = form.isAccommodationProvided.checked;
-      const isFoodProvided = form.isFoodProvided.checked;
-
-      // FormData에 값 추가
-      formData.set('isAccommodationProvided', isAccommodationProvided);
-      formData.set('isFoodProvided', isFoodProvided);
 
       // formData 내용 출력
       for (const [key, value] of formData.entries()) {
@@ -82,18 +79,13 @@
       const form = document.getElementById('jobPostingForm');
       const formData = new FormData(form);
 
-      const isAccommodationProvided = form.isAccommodationProvided.checked;
-      const isFoodProvided = form.isFoodProvided.checked;
-
-      // FormData에 값 추가
-      formData.set('isAccommodationProvided', isAccommodationProvided);
-      formData.set('isFoodProvided', isFoodProvided);
-
       try {
         const response = await fetch('/api/create-job-posting', {
           method: 'POST',
           body: formData,
         });
+
+        console.log(formData);
 
         if (response.ok) {
           const result = await response.json();

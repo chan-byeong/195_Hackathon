@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class JobPostingRequestBasicInfoDto {
 
+    private String title;
     private String companyName;
     private String companyName_en;
     private String phoneNumber;

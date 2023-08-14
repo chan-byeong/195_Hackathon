@@ -56,6 +56,7 @@ public class JobPostingService {
     @Transactional
     public JobPosting createJobPosting(JobPostingRequestBasicInfoDto requestDto, JobPostingRequestFileDto fileDto){
         JobPosting jobPosting = new JobPosting();
+        jobPosting.setTitle(requestDto.getTitle());
         jobPosting.setCompanyName(requestDto.getCompanyName());
         jobPosting.setCompanyName_en(requestDto.getCompanyName_en());
         jobPosting.setPhoneNumber(requestDto.getPhoneNumber());
