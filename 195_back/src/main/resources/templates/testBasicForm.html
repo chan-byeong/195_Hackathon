@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기본 정보 입력</title>
+  <script>
+        async function submitBasicInfo() {
+            const form = document.getElementById('basicInfoForm');
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/test/posting', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    const result = await response.json(); // 응답 본문을 JSON 형식으로 읽음
+                    console.log(result); // 콘솔에 응답 내용 출력
+                    alert('성공적으로 전송되었습니다.');
+                } else {
+                    alert('전송 실패: ' + response.statusText);
+                }
+            } catch (error) {
+                console.error('전송에 실패했습니다.', error);
+                alert('전송에 실패했습니다.');
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>기본 정보 입력</h1>
+
+<form id="basicInfoForm">
+  <label>테스트 문자열:</label>
+  <input type="text" name="testString" placeholder="문자열 입력"><br><br>
+
+  <label>테스트 숫자:</label>
+  <input type="number" name="testNumber" placeholder="숫자 입력"><br><br>
+
+  <label>테스트 불린값:</label>
+  <input type="checkbox" name="testBoolean" value="true"><br><br>
+
+  <label>테스트 이미지:</label><br>
+  <input type="file" name="testImages" multiple ><br><br>
+
+  <button type="button" onclick="submitBasicInfo()">제출</button>
+</form>
+</body>
+</html>
