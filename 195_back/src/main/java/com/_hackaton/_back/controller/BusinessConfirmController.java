@@ -4,6 +4,7 @@ package com._hackaton._back.controller;
 import com._hackaton._back.config.auth.PrincipalDetails;
 import com._hackaton._back.domain.User;
 import com._hackaton._back.dto.BusinessConfirmDto;
+import com._hackaton._back.repository.UserRepository;
 import com._hackaton._back.service.businessconfirm.BusinessConfirmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ public class BusinessConfirmController {
 
     @Autowired
     private BusinessConfirmService businessConfirmService;
+
+    @Autowired
+    private UserRepository userRepository;
 
 
     /**
@@ -35,21 +39,19 @@ public class BusinessConfirmController {
     @ResponseStatus(value = HttpStatus.OK)
     public void businessConfirmOk(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
-        principalDetails.getUser().setRole("ROLE_CEO");
+
+        userRepository.findByUsername(principalDetails.getUsername()).setRole("ROLE_CEO");
+
 
     }
     @RequestMapping(value = "/api/business-confirm-COMMON", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public void businessConfirmCommon(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
-        principalDetails.getUser().setRole("ROLE_COMMON");
+
+        userRepository.findByUsername(principalDetails.getUsername()).setRole("ROLE_COMMON");
 
     }
 
 
-    @RequestMapping(value = "/api/hi", method = RequestMethod.GET)
-    @ResponseStatus(value = HttpStatus.OK)
-    public String getHi(){
-        return "안녕";
-    }
 }
