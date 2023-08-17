@@ -37,8 +37,16 @@
       const form = document.getElementById('searchForm');
       let url = '/api/filtered-job-postings?';
 
-      if (form.city.value) url += 'city=' + form.city.value + '&';
-      if (form.sector.value) url += 'sector=' + form.sector.value + '&';
+      const cityValues = form.city.value.split(',');
+      cityValues.forEach(cityValue => {
+        if (cityValue.trim() !== '') url += 'city=' + cityValue.trim() + '&';
+      });
+
+      const sectorValues = form.sector.value.split(',');
+      sectorValues.forEach(sectorValue => {
+        if (sectorValue.trim() !== '') url += 'sector=' + sectorValue.trim() + '&';
+      });
+
       if (form.minSalary.value) url += 'minSalary=' + form.minSalary.value + '&';
       if (form.maxSalary.value) url += 'maxSalary=' + form.maxSalary.value + '&';
       if (form.isFoodProvided.checked) url += 'isFoodProvided=' + form.isFoodProvided.checked + '&';
