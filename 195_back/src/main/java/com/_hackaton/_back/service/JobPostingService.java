@@ -1,8 +1,12 @@
 package com._hackaton._back.service;
 
 import com._hackaton._back.domain.JobPosting;
+import com._hackaton._back.domain.TestBasicPosting;
+import com._hackaton._back.domain.TestPosting;
 import com._hackaton._back.dto.JobPostingRequestBasicInfoDto;
 import com._hackaton._back.dto.JobPostingRequestFileDto;
+import com._hackaton._back.dto.TestBasicInfoDto;
+import com._hackaton._back.dto.TestFileDto;
 import com._hackaton._back.exception.EmptyImageListException;
 import com._hackaton._back.exception.ImageUploadException;
 import com._hackaton._back.repository.JobPostingRepository;
@@ -159,4 +163,13 @@ public class JobPostingService {
     public List<JobPosting> findJobs(List<String> city, List<String> sector, Integer minSalary, Integer maxSalary, Boolean isFoodProvided, Boolean isAccommodationProvided) {
         return jobPostingRepository.findJobs(city, sector, minSalary, maxSalary, isFoodProvided, isAccommodationProvided);
     }
+
+    public TestPosting createTestPosting(TestBasicInfoDto basicInfoDto, TestFileDto fileDto) {
+        return null;
+    }
+
+    public TestBasicPosting createTestBasicPosting(TestBasicInfoDto basicInfoDto) {
+        return null;
+    }
+
 }
