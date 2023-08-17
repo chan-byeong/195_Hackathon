@@ -11,16 +11,19 @@ import java.util.List;
 @Repository
 public interface JobPostingRepository extends JpaRepository<JobPosting, Long> {
     @Query("SELECT j FROM JobPosting j WHERE "
-            + "( :city IS NULL OR j.city IN :city ) AND "
-            + "( :sector IS NULL OR j.sector IN :sector ) AND "
-            + "( :minSalary IS NULL OR j.salary >= :minSalary ) AND "
-            + "( :maxSalary IS NULL OR j.salary <= :maxSalary ) AND "
-            + "( :isFoodProvided IS NULL OR j.isFoodProvided = :isFoodProvided ) AND "
-            + "( :isAccommodationProvided IS NULL OR j.isAccommodationProvided = :isAccommodationProvided )")
+            + "(:isEmptyCity = true OR j.city IN :city) AND "
+            + "(:isEmptySector = true OR j.sector IN :sector) AND "
+            + "(:minSalary IS NULL OR j.salary >= :minSalary) AND "
+            + "(:maxSalary IS NULL OR j.salary <= :maxSalary) AND "
+            + "(:isFoodProvided IS NULL OR j.isFoodProvided = :isFoodProvided) AND "
+            + "(:isAccommodationProvided IS NULL OR j.isAccommodationProvided = :isAccommodationProvided)")
     List<JobPosting> findJobs(@Param("city") List<String> city,
+                              @Param("isEmptyCity") boolean isEmptyCity,
                               @Param("sector") List<String> sector,
+                              @Param("isEmptySector") boolean isEmptySector,
                               @Param("minSalary") Integer minSalary,
                               @Param("maxSalary") Integer maxSalary,
                               @Param("isFoodProvided") Boolean isFoodProvided,
                               @Param("isAccommodationProvided") Boolean isAccommodationProvided);
+
 }
