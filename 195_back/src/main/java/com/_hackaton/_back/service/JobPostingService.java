@@ -156,10 +156,10 @@ public class JobPostingService {
      * @param isAccommodationProvided 구직 공고 필터링에 필요한 숙소 제공 여부, null일 경우 숙소 제공 여부로 필터링하지 않음
      * @return 필터링된 구직 공고의 리스트, 조건에 맞는 구직 공고가 없을 경우 빈 리스트 반환
      */
-    public List<JobPosting> findJobs(List<String> cities, List<String> sectors, Integer minSalary, Integer maxSalary, Boolean isFoodProvided, Boolean isAccommodationProvided) {
+    public List<JobPosting> findJobs(List<String> cities, List<String> sectors, Integer minSalary, Integer maxSalary, Boolean foodProvided, Boolean accommodationProvided) {
         boolean isEmptyCity = cities == null || cities.isEmpty();
         boolean isEmptySector = sectors == null || sectors.isEmpty();
 
-        return jobPostingRepository.findJobs(cities, isEmptyCity, sectors, isEmptySector, minSalary, maxSalary, isFoodProvided, isAccommodationProvided);
+        return jobPostingRepository.findJobs(cities, isEmptyCity, sectors, isEmptySector, minSalary, maxSalary, foodProvided, accommodationProvided);
     }
 }
