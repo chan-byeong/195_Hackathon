@@ -52,6 +52,20 @@
     background-color: #F6FBF0;
 }
 
+.li_list{
+    padding-top: 15px;
+    padding-left: 20px;
+}
+
+.text_colorr{
+    color: #323438;
+    font-family: Pretendard;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
 .clicked_job {
 
     position: relative;
@@ -68,7 +82,24 @@
     font-size: 16px;
     font-weight: 400;
 
+    
+}
+.clicked_joob {
 
+    position: relative;
+    width: 300px;
+    height: 400px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    border: 2px solid #698A5B;
+    background: #F6FBF0;
+    box-shadow: 4px 4px 8px 0px rgba(94, 62, 40, 0.08);
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    z-index: 9000;
+
+    
 }
 
 
@@ -135,7 +166,7 @@
 }
 
 .pannel_bottom {
-    margin-top: 250px;
+    
     height: 20px;
     padding: 20px;
     text-align: right;
@@ -215,12 +246,22 @@
 
 .loc_checkbox {
     position: relative;
-    display: inline-block;
+   
     width: calc(33.33% - 20px);
     padding-bottom: 12px;
 
     padding-left: 25px;
     box-sizing: border-box;
+}
+.clicked_accomoo{
+    width: 319px;
+    height: 178px;
+    flex-shrink: 0;
+    z-index: 1000;
+    border-radius: 4px;
+    border: 2px solid #709361;
+    background: #FEFCF0;
+    box-shadow: 4px 4px 8px 0px rgba(94, 62, 40, 0.08);
 }
 
 
@@ -415,17 +456,21 @@
 
 .accomo_list {
     box-sizing: border-box;
-    max-height: 350px;
+    max-height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding-top: 20px;
-    padding-left: 30px;
-    margin-bottom: 40px;
+   
+   
     background-color: #F6FBF0;
-
 
 }
 
+.accomo_contentt{
+    text-align: start;
+    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 40px
+}
 
 .accomo_content li {
     padding-top: 15px;
@@ -434,12 +479,8 @@
 .accomo_bottom {
     text-align: right;
     height: 50px;
-
-    padding: 10px;
-
-    border: 1px solid #e5e6e9;
-    box-shadow: 0px 6px 48px rgba(30, 40, 58, 0.08);
-    border-radius: 8px;
+    padding-right: 10px;
+    border-radius: 8px
 }
 
 .accomo_reset {
