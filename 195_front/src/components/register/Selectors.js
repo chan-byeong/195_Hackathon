@@ -16,6 +16,15 @@ const SelectContainer = styled.div`
   box-shadow: 4px 4px 8px 0px rgba(94, 62, 40, 0.08);
 `;
 
+const Lists = styled.ul`
+  display : flex;
+  flex-direction :column;
+
+  flex-wrap : wrap;
+
+  height : ${props => (props.keyword.includes("Hour")&&"870px")};
+`;
+
 const ListItem = styled.li`
     margin-bottom: 15px;
     margin-left : 10px;
@@ -68,7 +77,7 @@ function Selectors({arrays,setter,setFormData,keyword}) {
   return (
 
     <SelectContainer>
-          <ul style={{textAlign:"start"}}>
+          <Lists keyword={keyword}>
               {
                 arrays.map((item , i)=>(
 
@@ -83,7 +92,7 @@ function Selectors({arrays,setter,setFormData,keyword}) {
                   </ListItem>
                 ))
               }
-          </ul>
+          </Lists>
     </SelectContainer>
 );
   

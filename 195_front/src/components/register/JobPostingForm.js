@@ -4,7 +4,9 @@ import Selectors from './Selectors';
 import styled from 'styled-components';
 
 const SECTORS = ["제조업","농업","서비스업","어업"];
-
+const PERIODS = ['1개월 미만','3개월 미만','6개월 이상','1년 이상','3년 이상']
+const TIMES_HOUR = Array.from({ length: 24 }, (_, index) => index.toString().padStart(2, '0'));
+const TIMES_MIN = ["10","20","30","40","50"];
 
 const Wrapper = styled.div`
     position :relative;
@@ -84,6 +86,10 @@ const JobPostingForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const submitData = new FormData();
+
+        setTimeout(()=>{
+            generateEmploymentPeriod(); 
+        },500)
 
         Object.keys(formData).forEach((key) => {
             //console.log(key, key.includes("Image") , typeof key)
@@ -235,66 +241,15 @@ const JobPostingForm = () => {
     const showPeriod = () => {
         return (
             selectPeriod ?
-                <>
-                    <div className="clicked_job">
-                        <div className="pannel_body2">
-
-                            <ul className='list_style2'>
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedEmPeriod['1개월 미만']}
-                                            onChange={() => dropChange('employmentPeriod', '1개월 미만')}></input>
-                                        <span className="text_color">1개월 미만</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedEmPeriod['3개월 미만']}
-                                            onChange={() => dropChange('employmentPeriod', '3개월 미만')}></input>
-                                        <span className="text_color">3개월 미만</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedEmPeriod['6개월 이상']}
-                                            onChange={() => dropChange('employmentPeriod', '6개월 이상')}></input>
-                                        <span className="text_color">6개월 이상</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedEmPeriod['1년 이상']}
-                                            onChange={() => dropChange('employmentPeriod', '1년 이상')} ></input>
-                                        <span className="text_color">1년 이상</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedEmPeriod['3년 이상']}
-                                            onChange={() => dropChange('employmentPeriod', '3년 이상')}></input>
-                                        <span className="text_color">3년 이상</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-
-                </>
+                <Wrapper>
+                    <Selectors
+                        arrays={PERIODS}
+                        setter={setClickedEmPeriod}
+                        setFormData={setFormData}
+                        keyword='employmentPeriod'
+                    />
+                <BUTTON onClick={()=>{setSelectPeriod(!selectPeriod);}}>확인</BUTTON>
+                </Wrapper>
                 : null
         );
     }
@@ -305,242 +260,15 @@ const JobPostingForm = () => {
     const showStartHour = () => {
         return (
             selectStartHour ?
-                <>
-                    <div className="clicked_job4">
-                        <div className="pannel_body">
-
-                            <ul className='job_container'>
-
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['00']}
-                                            onChange={() => createStartHour('00')}></input>
-                                        <span className="text_color3">00</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['01']}
-                                            onChange={() => createStartHour('01')}></input>
-                                        <span className="text_color3">01</span>
-                                    </label>
-                                </li>
-
-
-
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['02']}
-                                            onChange={() => createStartHour('02')}></input>
-                                        <span className="text_color3">02</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['03']}
-                                            onChange={() => createStartHour('03')}></input>
-                                        <span className="text_color3">03</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['04']}
-                                            onChange={() => createStartHour('04')}></input>
-                                        <span className="text_color3">04</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['05']}
-                                            onChange={() => createStartHour('05')}></input>
-                                        <span className="text_color3">05</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['06']}
-                                            onChange={() => createStartHour('06')}></input>
-                                        <span className="text_color3">06</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['07']}
-                                            onChange={() => createStartHour('07')}></input>
-                                        <span className="text_color3">07</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['08']}
-                                            onChange={() => createStartHour('08')}></input>
-                                        <span className="text_color3">08</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['09']}
-                                            onChange={() => createStartHour('09')}></input>
-                                        <span className="text_color3">09</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['10']}
-                                            onChange={() => createStartHour('10')}></input>
-                                        <span className="text_color3">10</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['11']}
-                                            onChange={() => createStartHour('11')}></input>
-                                        <span className="text_color3">11</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['12']}
-                                            onChange={() => createStartHour('12')}></input>
-                                        <span className="text_color3">12</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['13']}
-                                            onChange={() => createStartHour('13')}></input>
-                                        <span className="text_color3">13</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['14']}
-                                            onChange={() => createStartHour('14')}></input>
-                                        <span className="text_color3">14</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['15']}
-                                            onChange={() => createStartHour('15')}></input>
-                                        <span className="text_color3">15</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['16']}
-                                            onChange={() => createStartHour('16')}></input>
-                                        <span className="text_color3">16</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['17']}
-                                            onChange={() => createStartHour('17')}></input>
-                                        <span className="text_color3">17</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['18']}
-                                            onChange={() => createStartHour('18')}></input>
-                                        <span className="text_color3">18</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['19']}
-                                            onChange={() => createStartHour('19')}></input>
-                                        <span className="text_color3">19</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['20']}
-                                            onChange={() => createStartHour('20')}></input>
-                                        <span className="text_color3">20</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['21']}
-                                            onChange={() => createStartHour('21')}></input>
-                                        <span className="text_color3">21</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['22']}
-                                            onChange={() => createStartHour('22')}></input>
-                                        <span className="text_color3">22</span>
-                                    </label>
-                                </li>
-                                <li className="job_content_1">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartHour['23']}
-                                            onChange={() => createStartHour('23')}></input>
-                                        <span className="text_color3">23</span>
-                                    </label>
-                                </li>
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-
-                </>
-
+                <Wrapper>
+                    <Selectors  
+                        arrays={TIMES_HOUR}
+                        setter={setClickedStartHour}
+                        formData={createStartHour}
+                        keyword='startHour' 
+                    />
+                    <BUTTON onClick={()=>{setSelectStartHour(!selectStartHour);}}>확인</BUTTON>
+                </Wrapper>
                 : null
         );
     }
@@ -552,83 +280,15 @@ const JobPostingForm = () => {
     const showStartMin = () => {
         return (
             selectStartMin ?
-                <>
-                    <div className="clicked_job3">
-                        <div className="pannel_body">
-
-                            <ul >
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartMin['00']}
-                                            onChange={() => createStartMin('00')}></input>
-                                        <span className="text_color">00</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartMin['10']}
-                                            onChange={() => createStartMin('10')}></input>
-                                        <span className="text_color">10</span>
-                                    </label>
-                                </li>
-
-
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartMin['20']}
-                                            onChange={() => createStartMin('20')}></input>
-                                        <span className="text_color">20</span>
-                                    </label>
-                                </li>
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartMin['30']}
-                                            onChange={() => createStartMin('30')}></input>
-                                        <span className="text_color">30</span>
-                                    </label>
-                                </li>
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartMin['40']}
-                                            onChange={() => createStartMin('40')}></input>
-                                        <span className="text_color">40</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedStartMin['50']}
-                                            onChange={() => createStartMin('50')}></input>
-                                        <span className="text_color">50</span>
-                                    </label>
-                                </li>
-
-
-                            </ul>
-
-                        </div>
-
-                    </div>
-
-
-
-
-                </>
+                <Wrapper>
+                    <Selectors
+                        arrays={TIMES_MIN}
+                        setter={setClickedStartMin}
+                        formData={createStartMin}
+                        keyword='startMin'
+                    />
+                   <BUTTON onClick={()=>{setSelectStartMin(!selectStartMin);}}>확인</BUTTON>
+                </Wrapper>
                 : null
         );
     }
@@ -639,242 +299,15 @@ const JobPostingForm = () => {
     const showEndHour = () => {
         return (
             selectStartHour2 ?
-                <>
-                    <div className="clicked_job4">
-                        <div className="pannel_body">
-                           
-                                <ul className='job_container'>
-
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['00']}
-                                                onChange={() => createEndHour('00')}></input>
-                                            <span className="text_color3">00</span>
-                                        </label>
-                                    </li>
-
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['01']}
-                                                onChange={() => createEndHour('01')}></input>
-                                            <span className="text_color3">01</span>
-                                        </label>
-                                    </li>
-
-
-
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['02']}
-                                                onChange={() => createEndHour('02')}></input>
-                                            <span className="text_color3">02</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['03']}
-                                                onChange={() => createEndHour('03')}></input>
-                                            <span className="text_color3">03</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['04']}
-                                                onChange={() => createEndHour('04')}></input>
-                                            <span className="text_color3">04</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['05']}
-                                                onChange={() => createEndHour('05')}></input>
-                                            <span className="text_color3">05</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['06']}
-                                                onChange={() => createEndHour('06')}></input>
-                                            <span className="text_color3">06</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['07']}
-                                                onChange={() => createEndHour('07')}></input>
-                                            <span className="text_color3">07</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['08']}
-                                                onChange={() => createEndHour('08')}></input>
-                                            <span className="text_color3">08</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['09']}
-                                                onChange={() => createEndHour('09')}></input>
-                                            <span className="text_color3">09</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['10']}
-                                                onChange={() => createEndHour('10')}></input>
-                                            <span className="text_color3">10</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['11']}
-                                                onChange={() => createEndHour('11')}></input>
-                                            <span className="text_color3">11</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['12']}
-                                                onChange={() => createEndHour('12')}></input>
-                                            <span className="text_color3">12</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['13']}
-                                                onChange={() => createEndHour('13')}></input>
-                                            <span className="text_color3">13</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['14']}
-                                                onChange={() => createEndHour('14')}></input>
-                                            <span className="text_color3">14</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['15']}
-                                                onChange={() => createEndHour('15')}></input>
-                                            <span className="text_color3">15</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['16']}
-                                                onChange={() => createEndHour('16')}></input>
-                                            <span className="text_color3">16</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['17']}
-                                                onChange={() => createEndHour('17')}></input>
-                                            <span className="text_color3">17</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['18']}
-                                                onChange={() => createEndHour('18')}></input>
-                                            <span className="text_color3">18</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['19']}
-                                                onChange={() => createEndHour('19')}></input>
-                                            <span className="text_color3">19</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['20']}
-                                                onChange={() => createEndHour('20')}></input>
-                                            <span className="text_color3">20</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['21']}
-                                                onChange={() => createEndHour('21')}></input>
-                                            <span className="text_color3">21</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['22']}
-                                                onChange={() => createEndHour('22')}></input>
-                                            <span className="text_color3">22</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content_1">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartHour2['23']}
-                                                onChange={() => createEndHour('23')}></input>
-                                            <span className="text_color3">23</span>
-                                        </label>
-                                    </li>
-
-                                </ul>
-
-                       
-
-                        </div>
-
-                    </div>
-
-                </>
+                <Wrapper>
+                    <Selectors  
+                        arrays={TIMES_HOUR}
+                        setter={setClickedStartHour2}
+                        formData={createEndHour}
+                        keyword='startHour2' 
+                    />
+                    <BUTTON onClick={()=>{setSelectStartHour(!selectStartHour);}}>확인</BUTTON>
+                </Wrapper>
                 : null
         );
     }
@@ -887,87 +320,21 @@ const JobPostingForm = () => {
     const showEndMin = () => {
         return (
             selectStartMin2 ?
-                <>
-                    <div className="clicked_job3">
-                        <div className="pannel_body">
-                            
-                                <ul className='min_padd'>
+                <Wrapper>
+                <Selectors
+                        arrays={TIMES_MIN}
+                        setter={setClickedStartMin2}
+                        formData={createEndMin}
+                        keyword='startMin2'
+                    />
+                <BUTTON onClick={()=>{setSelectStartMin2(!selectStartMin);}}>확인</BUTTON>
+                
+                {/* <div className="pannel_bottom">
+                    <button className="btn_reset">초기화</button>
+                    <button onClick={generateEmploymentPeriod} className="btn_apply">적용</button>
+                </div> */}
 
-                                    <li className="job_content">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartMin2['00']}
-                                                onChange={() => createEndMin('00')}></input>
-                                            <span className="text_color">00</span>
-                                        </label>
-                                    </li>
-
-                                    <li className="job_content">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartMin2['10']}
-                                                onChange={() => createEndMin('10')}></input>
-                                            <span className="text_color">10</span>
-                                        </label>
-                                    </li>
-
-
-
-                                    <li className="job_content">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartMin2['20']}
-                                                onChange={() => createEndMin('20')}></input>
-                                            <span className="text_color">20</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartMin2['30']}
-                                                onChange={() => createEndMin('30')}></input>
-                                            <span className="text_color">30</span>
-                                        </label>
-                                    </li>
-                                    <li className="job_content">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartMin2['40']}
-                                                onChange={() => createEndMin('40')}></input>
-                                            <span className="text_color">40</span>
-                                        </label>
-                                    </li>
-
-                                    <li className="job_content">
-                                        <label className="custom-checkbox">
-                                            <input
-                                                type="checkbox"
-                                                checked={clickedStartMin2['50']}
-                                                onChange={() => createEndMin('50')}></input>
-                                            <span className="text_color">50</span>
-                                        </label>
-                                    </li>
-
-
-                                </ul>
-
-                       
-
-                        </div>
-
-                    </div>
-                    <div className="pannel_bottom">
-                        <button className="btn_reset">초기화</button>
-                        <button onClick={generateEmploymentPeriod} className="btn_apply">적용</button>
-                    </div>
-
-
-                </>
+                </Wrapper>
                 : null
         );
     }
@@ -1061,8 +428,6 @@ const JobPostingForm = () => {
                     </div>
                 </div>
 
-                <br></br>
-
                 <div className='flex_container'>
                     <div className='columm'>
                         <label className='job_title_small'>지역</label>
@@ -1070,9 +435,7 @@ const JobPostingForm = () => {
                         {showRegion()}
                     </div>
 
-
-
-                    <div>
+                    <div className='column'>
                         <label className='job_title_small'>숙식 제공 여부</label> <br></br>
                         <button className='tap_style' onClick={handleFood} > 기숙사 / 식사 제공 여부</button>
                     </div>
@@ -1081,15 +444,11 @@ const JobPostingForm = () => {
                     {showFood()}
                 </div>
 
-                <br></br>
-                <br></br>
-
-
-
                 <div className='flex_container'>
                     <div>
                         <label className='job_title_small'>근무 기간</label><br />
-                        <button className='tap_style' onClick={handlePeriod}>근무 기간 선택</button>
+                        <button className='tap_style' onClick={handlePeriod}>{formData.employmentPeriod===''?"근무기간선택":formData.employmentPeriod}</button>
+                        {showPeriod()}
                     </div>
                     <br></br>
 
@@ -1098,45 +457,44 @@ const JobPostingForm = () => {
                         <input type="text" placeholder='' className="tap_style" name="workDays" onChange={handleChange} value={formData.workDays} required /><br /><br />
                     </div>
                 </div>
-                {showPeriod()}
-                <br></br>
-                <br></br>
 
 
                 <div>
-
-                    <p className='job_title_small2'>근무 시작 시간</p>
-                    <button className='tap_style' onClick={handleStartHour}>시간</button>
-
-
-
-                    <label></label>
-                    <button className='tap_style2' onClick={handleStartMin}>분(10분 단위)</button>  {/* 두개는 묶어서 쿼리 스트링 만들기*/}
-
-                </div>
-                <div className='inline'>
                     <div>
-                        {showStartHour()}
-                    </div>
-                    <div>
-                        {showStartMin()}
-                    </div>
+                        <p className='job_title_small2'>근무 시작 시간</p>
+                        <div className='flex_container'>
+                            <div>
+                                <button className='tap_style' onClick={handleStartHour}>시간</button>
+                                {showStartHour()}
+                            </div>
+                        
+                            <div>
+                                <button className='tap_style2' onClick={handleStartMin}>분(10분 단위)</button>  {/* 두개는 묶어서 쿼리 스트링 만들기*/}
+                                {showStartMin()}
+                            </div>
+                        </div>
+                    </div>               
                 </div>
-                <br></br>
 
                 <div>
-                    <label className='job_title_small2'>근무 종료 시간</label><br />
-                    <button className='tap_style' onClick={handleEndHour}>시간</button>
+                    <div>
+                        <p className='job_title_small2'>근무 종료 시간</p>
+                        <div className='flex_container'>
+                            <div>
+                                <button className='tap_style' onClick={handleEndHour}>시간</button>
+                                {showEndHour()}
+                            </div>
+                            <div>
+                                <button className='tap_style2' onClick={handleEndMin}>분(10분 단위)</button>
+                                {showEndMin()}
+                            </div>
 
-                    <label></label>
-                    <button className='tap_style2' onClick={handleEndMin}>분(10분 단위)</button>
+                        </div>
+      
+                    </div>
+                   
                 </div>
-                {showEndHour()}
-                {showEndMin()}
 
-
-
-                <br></br>
                 <label>대표 이미지</label><br />
                 <input type="file" id="profileImage" name="profileImage" onChange={handleChange} multiple required /><br /><br />
 
@@ -1149,10 +507,7 @@ const JobPostingForm = () => {
                 <input type="file" id="details" name="details" onChange={handleChange} multiple required /><br /><br />
 
 
-
-
                 <button type="submit">업로드</button>
-                <br></br>
                 <button type="button" onClick={handlePrintFormData}>formData 내용 출력</button>
             </form>
         </div>
