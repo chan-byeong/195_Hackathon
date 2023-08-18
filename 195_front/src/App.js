@@ -3,6 +3,7 @@ import GlobalStyles from './styles/GlobalStyle';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
 import ResultPage from './pages/ResultPage';
+import JobPostingForm from './components/register/JobPostingForm';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/result" element={<ResultPage/>}/>
           <Route path="/login" element={<div>LOGIN</div>}/>
           <Route path="/search" element={<DetailPage/>}/>
+          <Route path="/postingform" element={<JobPostingForm/>}/>
         </Routes>
       </BrowserRouter>
     </>
