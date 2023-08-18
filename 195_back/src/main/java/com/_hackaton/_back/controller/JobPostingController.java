@@ -71,8 +71,8 @@ public class JobPostingController {
      * @param sector 구직 공고 필터링에 필요한 업종 목록
      * @param minSalary 구직 공고 필터링에 필요한 최소 연봉
      * @param maxSalary 구직 공고 필터링에 필요한 최대 연봉
-     * @param isFoodProvided 구직 공고 필터링에 필요한 식사 제공 여부
-     * @param isAccommodationProvided 구직 공고 필터링에 필요한 숙소 제공 여부
+     * @param foodProvided 구직 공고 필터링에 필요한 식사 제공 여부
+     * @param accommodationProvided 구직 공고 필터링에 필요한 숙소 제공 여부
      * @return 필터링된 구직 공고의 정보와 함께 상태 코드 200을 반환. 실패 시 에러 메시지와 함께 다른 상태 코드를 반환.
      */
     @GetMapping("/filtered-job-postings")
@@ -81,10 +81,10 @@ public class JobPostingController {
             @RequestParam(required = false) List<String> sector,
             @RequestParam(required = false) Integer minSalary,
             @RequestParam(required = false) Integer maxSalary,
-            @RequestParam(required = false) Boolean isFoodProvided,
-            @RequestParam(required = false) Boolean isAccommodationProvided) {
+            @RequestParam(required = false) Boolean foodProvided,
+            @RequestParam(required = false) Boolean accommodationProvided) {
 
-        List<JobPosting> jobPostings = jobPostingService.findJobs(city, sector, minSalary, maxSalary, isFoodProvided, isAccommodationProvided);
+        List<JobPosting> jobPostings = jobPostingService.findJobs(city, sector, minSalary, maxSalary, foodProvided, accommodationProvided);
 
         return ResponseEntity.ok(jobPostings);
     }

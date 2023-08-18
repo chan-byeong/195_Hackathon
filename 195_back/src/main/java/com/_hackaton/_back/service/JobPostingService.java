@@ -152,8 +152,8 @@ public class JobPostingService {
      * @param sectors 구직 공고 필터링에 필요한 업종 목록, null일 경우 업종으로 필터링하지 않음
      * @param minSalary 구직 공고 필터링에 필요한 최소 연봉, null일 경우 최소 연봉으로 필터링하지 않음
      * @param maxSalary 구직 공고 필터링에 필요한 최대 연봉, null일 경우 최대 연봉으로 필터링하지 않음
-     * @param isFoodProvided 구직 공고 필터링에 필요한 식사 제공 여부, null일 경우 식사 제공 여부로 필터링하지 않음
-     * @param isAccommodationProvided 구직 공고 필터링에 필요한 숙소 제공 여부, null일 경우 숙소 제공 여부로 필터링하지 않음
+     * @param foodProvided 구직 공고 필터링에 필요한 식사 제공 여부, null일 경우 식사 제공 여부로 필터링하지 않음
+     * @param accommodationProvided 구직 공고 필터링에 필요한 숙소 제공 여부, null일 경우 숙소 제공 여부로 필터링하지 않음
      * @return 필터링된 구직 공고의 리스트, 조건에 맞는 구직 공고가 없을 경우 빈 리스트 반환
      */
     public List<JobPosting> findJobs(List<String> cities, List<String> sectors, Integer minSalary, Integer maxSalary, Boolean foodProvided, Boolean accommodationProvided) {

@@ -23,7 +23,7 @@ public interface JobPostingRepository extends JpaRepository<JobPosting, Long> {
                               @Param("isEmptySector") boolean isEmptySector,
                               @Param("minSalary") Integer minSalary,
                               @Param("maxSalary") Integer maxSalary,
-                              @Param("foodProvided") Boolean isFoodProvided,
-                              @Param("accommodationProvided") Boolean isAccommodationProvided);
+                              @Param("foodProvided") Boolean isfoodProvided,
+                              @Param("accommodationProvided") Boolean isaccommodationProvided);
 
 }
