@@ -4,7 +4,7 @@ import Nav from '../components/elements/Nav';
 import Header from '../components/Header';
 import googleIcon from '../images/icon-google.svg';
 import loginPic from '../images/login_pic.png';
-import {BROWN, GREEN} from "../styles/common";
+import {BROWN, GREEN, baseUrl} from "../styles/common";
 
 import {useNavigate} from 'react-router-dom'
 
@@ -13,10 +13,9 @@ import {useNavigate} from 'react-router-dom'
 
 function LoginPage() {
 
-  const BaseUrl = "https://9c95-210-106-232-238.ngrok-free.app/oauth2/authorization/google";
   
   const googleLogin = () => {
-    window.open(BaseUrl , "_self");
+    window.open(baseUrl+"/oauth2/authorization/google" , "_self");
   }
 
   const navigate = useNavigate(); 

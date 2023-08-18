@@ -1,4 +1,6 @@
-import React from 'react'
+import {useState,useEffect} from 'react'
+import { baseUrl } from '../../styles/common';
+
 import InfoBox from './InfoBox'
 import styled from 'styled-components'
 import SliderImg from './SliderImg';
@@ -8,9 +10,21 @@ import ConditionDetail from './ConditionDetail';
 import 이미지 from '../../images/logo512.png';
 import Nav from '../elements/Nav';
 
+import axios from 'axios';
+
 
 function Details() {
   //DB에서 데이터 받아오고 하위 컴포넌트에 데이터 전달해줘야함.
+  ///api/one-job-posting/{id}
+
+  useEffect(()=>{
+    fetchData();
+  },[])
+
+  const fetchData = async () =>{
+    await axios.get(baseUrl+`/api/one-job-posting/1`).then(res=>console.log(res)).catch(err=>console.log(err));
+  }
+  
 
   const data = {
     title :"공고제목",

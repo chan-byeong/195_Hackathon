@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { baseUrl } from '../styles/common';
 
 const JobPostingForm = () => {
   const [formData, setFormData] = useState({
@@ -47,7 +48,7 @@ const JobPostingForm = () => {
     });
 
     try {
-      const response = await fetch('https://9ff8-61-79-192-234.ngrok-free.app/api/create-job-posting', {
+      const response = await fetch(baseUrl+'/api/create-job-posting', {
         method: 'POST',
         body: submitData,
       });

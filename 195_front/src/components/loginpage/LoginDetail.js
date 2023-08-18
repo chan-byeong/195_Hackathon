@@ -3,6 +3,9 @@ import Nav from '../elements/Nav';
 import styled from 'styled-components'
 
 import axios from 'axios';
+import { baseUrl } from '../../styles/common';
+
+///api/business-confirm
 
 function LoginDetail() {
   const [businessData , setbusinessData] = useState({
@@ -19,9 +22,10 @@ function LoginDetail() {
     console.log(businessData);
     //api 통신으로 맞는지 확인하기
 
-    const response = await axios.post("/api/business-confirm" , businessData)
+    const response = await axios.post(baseUrl+"/api/business-confirm" , businessData)
       .then( (res) => {
-        const val = res.date === '01';
+        console.log(res);
+        const val = res.data === '01';
         setValidate(val);
         setShow(true);
       })
@@ -216,6 +220,8 @@ const FormItem = styled.div`
     
     outline : none;
     border : none;
+
+    font-size: 28px;
   }
 
 

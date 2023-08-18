@@ -3,6 +3,7 @@ import Nav from '../elements/Nav'
 import styled from 'styled-components';
 
 import googleSign from "../../images/googleSign.png";
+import {baseUrl} from '../../styles/common'
 
 function Signup() {
 
@@ -11,6 +12,10 @@ function Signup() {
   const handleMember = (e) => {
     e.target.innerText === "개인회원" ?
       setIsCompany(false) : setIsCompany(true);
+  }
+
+  const googleLogin = () => {
+     window.open(baseUrl+"/oauth2/authorization/google" , "_self");
   }
 
   return (
@@ -30,7 +35,7 @@ function Signup() {
         }
         <Text2>Google 계정으로 간편 회원가입</Text2>
         
-        <GoogleSignBtn/>
+        <GoogleSignBtn onClick={googleLogin}/>
         
 
       </Container>
