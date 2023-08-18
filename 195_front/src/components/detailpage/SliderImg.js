@@ -9,6 +9,8 @@ import { DARKGREEN } from '../../styles/common';
 function SliderImg({images}) {
 
 
+  console.log(images);
+
   const NextArrow = ({onClick}) => {
     return(
       <Next onClick={onClick}/>
@@ -24,7 +26,7 @@ function SliderImg({images}) {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     cssEase: "linear",
     nextArrow : <NextArrow/>,
@@ -110,6 +112,7 @@ const SlideContents = styled.div`
 const ImgBox = styled.div`
   background-image: url(${props => props.src});
   background-size: contain;
+  background-position: center;
   width: 517px;
   height: 300px;
   border : 1px solid black; 

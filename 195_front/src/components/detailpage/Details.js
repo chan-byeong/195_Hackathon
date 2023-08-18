@@ -9,6 +9,7 @@ import Condition from './Condition';
 import ConditionDetail from './ConditionDetail';
 import 이미지 from '../../images/logo512.png';
 import Nav from '../elements/Nav';
+import { useMatch } from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -16,13 +17,27 @@ import axios from 'axios';
 function Details() {
   //DB에서 데이터 받아오고 하위 컴포넌트에 데이터 전달해줘야함.
   ///api/one-job-posting/{id}
+  const match= useMatch('/result/:id');
+ // const [id, setid] = useState('');
+ // console.log(match.params.id);
+  const [cData, setcData] = useState();
+  const [loading,setLoading] = useState(false);
+
+  console.log(cData);
 
   useEffect(()=>{
     fetchData();
   },[])
 
   const fetchData = async () =>{
-    await axios.get(baseUrl+`/api/one-job-posting/1`).then(res=>console.log(res)).catch(err=>console.log(err));
+    await axios.get(baseUrl+`/api/one-job-posting/${match.params.id}`)
+    .then(res=>
+      {
+      setcData(res.data)
+      setLoading(true);
+      console.log(res.data)
+      })
+    .catch(err=>console.log(err));
   }
   
 
@@ -50,15 +65,19 @@ function Details() {
   //InfoBox -> 공고명 , 회사명 , 번호 , 월급 , 직종 , 위치(00시) , 숙식
   //Slider -> 이미지
 
+  //cData.companyImages
+  //cData.detailAdress
   return (
     <>
+    {loading&&(
       <Wrapper>
-        <InfoBox data={data} /> 
-        <SliderImg images={images}/>
-        <Location location={location}/>
-        <Condition data={data}/>
-        <ConditionDetail/>
-      </Wrapper>
+        <InfoBox data={cData} /> 
+        <SliderImg images={cData.companyImages}/>
+        <Location location={cData.detailAdress}/>
+        <Condition data={cData}/>
+        <ConditionDetail data={cData.details}/>
+      </Wrapper>)
+      }
     </>
   )
 }

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import { DARKGREEN } from '../../styles/common';
 
 
-function ConditionDetail() {
+function ConditionDetail({data}) {
   return (
     <Wrapper>
       <Title>상세 요강</Title>
-      <ImgBox></ImgBox>
+      <ImgBox src={data}/>
     </Wrapper>
   )
 }
@@ -30,5 +30,10 @@ const Title = styled.div`
 `;
 
 const ImgBox  = styled.img`
-  height : 450px;
+  background-image: url(${props => props.src});
+  background-size: cover;
+  background-position: center;
+  height : auto;
+  width : auto;
+
 `;

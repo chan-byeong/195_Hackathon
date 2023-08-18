@@ -3,7 +3,7 @@ export default {
   login : '로그인',
   nav : {
     recruitment : '채용공고',
-    community : '커뮤니티',
-    membership : '멤버쉽',
+    loginDetail : '사업자 등록',
+    admin : '공고 등록',
   },
 }

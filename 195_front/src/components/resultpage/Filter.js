@@ -3,6 +3,7 @@ import "../../styles/resultpage/resultStyle.css"
 import axios from "axios";
 
 
+
 export const Filter = ({ user, setUser }) => {
 
 
@@ -100,12 +101,12 @@ export const Filter = ({ user, setUser }) => {
         }
 
 
-        {/*} const response = await axios.get(`https://9ff8-61-79-192-234.ngrok-free.app/api/filtered-job-postings?${queryString}`, {
+        const response = await axios.get(`http://195job.o-r.kr/api/filtered-job-postings?${queryString}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'ngrok-skip-browser-warning': '69420',
             }
-        }).then(res => { console.log(res.data); setTest(res.data) }); */}
+        }).then(res => { console.log(res.data); setUser(res.data) }); 
     }
 
 
@@ -128,17 +129,17 @@ export const Filter = ({ user, setUser }) => {
     const showJobPage = () => {
 
         return (job ?
-            <div className="clicked_job">
+            <div className="clicked_joob">
                 <div className="pannel_body">
-                    <div className="filter_depth1">
-                        <ul>
+                 
+                        <ul className="li_list">
                             <li className="job_content">
                                 <label className="custom-checkbox">
                                     <input
                                         type="checkbox"
                                         checked={clickedSector['제조업']}
                                         onChange={() => handleSectorClick('제조업')}></input>
-                                    <span className="text_color">제조업</span>
+                                    <span className="text_colorr">제조업</span>
                                 </label>
                             </li>
 
@@ -148,7 +149,7 @@ export const Filter = ({ user, setUser }) => {
                                         type="checkbox"
                                         checked={clickedSector['건설업']}
                                         onChange={() => handleSectorClick('건설업')}></input>
-                                    <span className="text_color">건설업</span>
+                                    <span className="text_colorr">건설업</span>
                                 </label>
                             </li>
 
@@ -158,7 +159,7 @@ export const Filter = ({ user, setUser }) => {
                                         type="checkbox"
                                         checked={clickedSector['서비스업']}
                                         onChange={() => handleSectorClick('서비스업')}></input>
-                                    <span className="text_color">서비스업</span>
+                                    <span className="text_colorr">서비스업</span>
                                 </label>
                             </li>
 
@@ -168,7 +169,7 @@ export const Filter = ({ user, setUser }) => {
                                         type="checkbox"
                                         checked={clickedSector['농축산업']}
                                         onChange={() => handleSectorClick('농축산업')} ></input>
-                                    <span className="text_color">농축산업</span>
+                                    <span className="text_colorr">농축산업</span>
                                 </label>
                             </li>
 
@@ -178,11 +179,11 @@ export const Filter = ({ user, setUser }) => {
                                         type="checkbox"
                                         checked={clickedSector['어업']}
                                         onChange={() => handleSectorClick('어업')}></input>
-                                    <span className="text_color">어업</span>
+                                    <span className="text_colorr">어업</span>
                                 </label>
                             </li>
                         </ul>
-                    </div>
+                    
 
                 </div>
 
@@ -293,12 +294,12 @@ export const Filter = ({ user, setUser }) => {
     const Clicked_Accomo = () => { setAccomo(!accomo); }
     const showAccomoPage = () => {
         return (accomo ?
-            <div className="clicked_accomo">
+            <div className="clicked_accomoo">
                 <div className="accomo_body">
                     <div className="accomo_list">
-                        <ul className="accomo_content">
+                        <ul className="accomo_contentt">
                             <li>
-                                <label>
+                                <label className="custom-checkbox">
                                     <input 
                                     type="checkbox"
                                     checked={clickedFood}
@@ -307,7 +308,7 @@ export const Filter = ({ user, setUser }) => {
                                 </label>
                             </li>
                             <li>
-                                <label>
+                                <label className="custom-checkbox">
                                     <input
                                      type="checkbox"
                                      checked={clickedAccomo}
@@ -334,7 +335,7 @@ export const Filter = ({ user, setUser }) => {
 
 
     return (
-        <>
+        <div style={{marginLeft:"120px"}}>
             <div className="filter_div">
                 <ul className="filter_ulist">
                     <button className="btn_filter" onClick={Clicked_job}><li className="filter_content">업종</li></button>
@@ -345,13 +346,13 @@ export const Filter = ({ user, setUser }) => {
                     {showWagePage()}
                     <button className="btn_filter" onClick={Clicked_Accomo}><li className="filter_content">숙식제공</li></button>
                     {showAccomoPage()}
-                    <button className="app_style">적용</button>
+                   
                     <div className="reset_div"><button className="reset">🔄️reset</button></div>
                 </ul>
 
             </div>
 
-        </>
+        </div>
 
 
     )

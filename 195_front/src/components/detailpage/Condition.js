@@ -8,11 +8,11 @@ function Condition({data}) {
       <Title>근무 조건</Title>
       <CondBox>
         <Label><div>급여</div><span>{data.salary}</span></Label>
-        <Label><div>근무 기간</div><span>2,000,000</span></Label>
-        <Label><div>업종</div><span>{data.job}</span></Label>
-        <Label><div>근무 요일</div><span>2,000,000</span></Label>
-        <Label><div>숙식</div><span>{data.accom1 ? "식사 O" : "식사 X"} / {data.acccom2? "기숙사 O": "기숙사 X"}</span></Label>
-        <Label><div>근무 시간</div><span>2,000,000</span></Label>
+        <Label><div>근무 기간</div><span>{data.employmentPeriod}</span></Label>
+        <Label><div>업종</div><span>{data.sector}</span></Label>
+        <Label><div>근무 요일</div><span>{data.workDays}</span></Label>
+        <Label><div>숙식</div><span>{data.foodProvided ? "식사 O" : "식사 X"} / {data.accommodationProvided? "기숙사 O": "기숙사 X"}</span></Label>
+        <Label><div>근무 시간</div><span>{data.workHours}</span></Label>
       </CondBox>
     </Wrapper>
   )

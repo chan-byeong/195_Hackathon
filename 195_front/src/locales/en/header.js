@@ -3,7 +3,7 @@ export default {
   loing : 'Login',
   nav : {
     recruitment : 'Recruitment',
-    community : 'Community',
-    membership : 'Membership',
+    loginDetail : 'ENROLL',
+    admin : 'Post',
   },
 }

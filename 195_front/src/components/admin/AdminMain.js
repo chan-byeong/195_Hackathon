@@ -6,9 +6,12 @@ import Nav from '../elements/Nav'
 import { Contents } from '../mainpage/Contents'
 
 import immmg from '../../images/195_logo.png'
+import { useNavigate } from 'react-router-dom';
 
 
 function AdminMain() {
+
+  const navigate = useNavigate();
 
 
   return (
@@ -17,7 +20,9 @@ function AdminMain() {
       <Wrapper>
         <Contents1>
           <p>근로자가 필요하다면?</p>
-          <RegisterBtn><span>공고 등록하기</span></RegisterBtn>
+          <RegisterBtn
+            onClick={()=>{navigate("/register")}}
+          ><span>공고 등록하기</span></RegisterBtn>
         </Contents1>
         <Contents2>
           <Title>오늘의 근로 계약 TIP!</Title>

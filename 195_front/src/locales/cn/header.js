@@ -3,7 +3,7 @@ export default {
   login : "登录",
   nav : {
     recruitment : '征聘',
-    community : '社区',
-    membership : '会员专用',
+    loginDetail : '社区',
+    admin : '会员专用',
   },
 }

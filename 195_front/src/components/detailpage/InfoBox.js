@@ -10,26 +10,28 @@ import { DARKGREEN } from '../../styles/common'
 
 function InfoBox({data}) {
 
-  console.log(data);
+
+  //console.log(data);
+  
 
   return (
     <InfoContainer>
       <Info>
         <InfoContents>
           <h2>{data.title}</h2>
-          <span>{data.company} / {data.phone}</span>
+          <span>{data.companyName} / {data.phoneNumber}</span>
         </InfoContents>
         <InfoImgBox>
-          <div>이미지</div>
+          <Img src={ data.profileImage} alt="프로필이미지"/>
         </InfoImgBox>
       </Info>
 
       <Info2>
         <InfoList>
           <li><span className='won'></span>{data.salary}</li>
-          <li><span className='job'></span>{data.job}</li>
-          <li><span className='loca'></span>{data.location}</li>
-          <li><span className='accom'></span>{data.accom1 ? "식사 O" : "식사 X"} / {data.acccom2? "기숙사 O": "기숙사 X"}</li>
+          <li><span className='job'></span>{data.sector}</li>
+          <li><span className='loca'></span>{data.city}</li>
+          <li><span className='accom'></span>{data.foodProvided ? "식사 O" : "식사 X"} / {data.accommodationProvided? "기숙사 O": "기숙사 X"}</li>
         </InfoList>
       </Info2>
     </InfoContainer>
@@ -70,7 +72,8 @@ const InfoContents = styled.div`
 const InfoImgBox = styled.div`
   width : 600px;
   height : 260px;
-  background-color: antiquewhite;
+  //background-color: antiquewhite;
+
 `;
 
 const Info2 = styled.div`
@@ -114,4 +117,12 @@ const InfoList = styled.div`
       background-image : url(${iconaccom});
     }
   }
+`;
+
+
+const Img = styled.img`
+  width : 100%;
+  height :100%;
+  background-size : contain;
+  background-position :center;
 `;

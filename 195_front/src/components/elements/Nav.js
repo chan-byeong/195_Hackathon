@@ -28,13 +28,13 @@ const Nav = ({main}) => {
 
         <NavMid>
           <NavBtn>
-            <Link to='/'>{t('nav.recruitment')}</Link>
+            <Link to='/result'>{t('nav.recruitment')}</Link>
           </NavBtn>
           <NavBtn>
-            <Link to='/community'>{t('nav.community')}</Link>
+            <Link to='/loginDetail'>{t('nav.loginDetail')}</Link>
           </NavBtn>
           <NavBtn>
-            <Link to='/membership'>{t('nav.membership')}</Link>
+            <Link to='/adminMain'>{t('nav.admin')}</Link>
           </NavBtn>
         </NavMid>
 
@@ -45,7 +45,9 @@ const Nav = ({main}) => {
               <option value='cn'>漢語</option>
           </Select>
           <LoginBtn>
-            <Link to='/login'>{t('login')}</Link>
+            <Link to='/login'>
+               {t('login')}
+            </Link>
           </LoginBtn>
         </NavRight> 
       </NavContainer>
@@ -102,6 +104,9 @@ const NavBtn = styled.div`
   cursor : pointer;
 
   & > a{
+    display : inline-flex;
+    width : 100%;
+    justify-content :center;
     font-size : 26px;
     font-weight : 700;
     color : ${BROWN};
@@ -111,9 +116,13 @@ const NavBtn = styled.div`
 const LoginBtn = styled(NavBtn)`
   background-color : ${BROWN};
 
-  & > a{
+  & > a {
+    display : inline-flex;
+    width : 100%;
+    justify-content :center;
     color : #fff;
   }
+  
 `;
 
 const NavRight = styled.div`
