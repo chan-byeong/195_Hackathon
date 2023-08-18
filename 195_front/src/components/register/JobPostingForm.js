@@ -1,5 +1,30 @@
 import React, { startTransition, useEffect, useState } from 'react';
 import "../../styles/JobPostingForm.css"
+import Selectors from './Selectors';
+import styled from 'styled-components';
+
+const SECTORS = ["제조업","농업","서비스업","어업"];
+
+
+const Wrapper = styled.div`
+    position :relative;
+
+`;
+const BUTTON = styled.button`
+    position :absolute;
+    bottom : 30px;
+    right : 30px;
+
+
+    font-size : 35px;
+    font-weight : 500;
+    color : #fff;
+    
+    
+
+    //border : 1px solid #372417;
+`;
+
 
 
 const JobPostingForm = () => {
@@ -74,7 +99,7 @@ const JobPostingForm = () => {
         });
 
         try {
-            const response = await fetch('https://9ff8-61-79-192-234.ngrok-free.app/api/create-job-posting', {
+            const response = await fetch('https://effd-58-224-72-100.ngrok-free.app/api/create-job-posting', {
                 method: 'POST',
                 body: submitData,
             });
@@ -106,7 +131,6 @@ const JobPostingForm = () => {
     const [selectStartMin, setSelectStartMin] = useState(false);
     const [selectStartMin2, setSelectStartMin2] = useState(false);
     const [selectRegion, setSelectRegion] = useState(false);
-
     const [clickedSector, setClickedSector] = useState({});
     const [clickedCity, setClickedCity] = useState({});
     const [clickedEmPeriod, setClickedEmPeriod] = useState({});
@@ -136,9 +160,6 @@ const JobPostingForm = () => {
         setClickedStartMin2(min);
         console.log(clickedStartMin2)
     }
-
-
-
 
     const handleFood = () => {
         setSelectFood(!selectFood);
@@ -194,65 +215,16 @@ const JobPostingForm = () => {
     const showSector = () => {
         return (
             selectSector ?
-                <div className="clicked_job2">
-                    <div className="pannel_body">
-                        <div className="filter_depth2">
-                            <ul className='list_style'>
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedSector['제조업']}
-                                            onChange={() => dropChange('sector', '제조업')}></input>
-                                        <span className="text_color vertical">제조업</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedSector['건설업']}
-                                            onChange={() => dropChange('sector', '건설업')}></input>
-                                        <span className="text_color vertical">건설업</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedSector['서비스업']}
-                                            onChange={() => dropChange('sector', '서비스업')}></input>
-                                        <span className="text_color vertical">서비스업</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedSector['농축산업']}
-                                            onChange={() => dropChange('sector', '농축산업')} ></input>
-                                        <span className="text_color vertical">농축산업</span>
-                                    </label>
-                                </li>
-
-                                <li className="job_content">
-                                    <label className="custom-checkbox">
-                                        <input
-                                            type="checkbox"
-                                            checked={clickedSector['어업']}
-                                            onChange={() => dropChange('sector', '어업')}></input>
-                                        <span className="text_color vertical">어업</span>
-                                    </label>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-                : null
+            <Wrapper>
+                <Selectors 
+                    arrays={SECTORS} 
+                    setter={setClickedSector}
+                    setFormData={setFormData}
+                    keyword='sector'
+                />
+                <BUTTON onClick={()=>{setSelectSector(!selectSector);}}>확인</BUTTON>
+            </Wrapper>
+            : null
         );
     }
 
@@ -1060,13 +1032,13 @@ const JobPostingForm = () => {
                 {/* 여기서는 일부 입력창에 onChange 속성을 추가했습니다. */}
 
                 <label className='job_title'>공고제목</label><br />
-                <input className="title_input" type="text" placeholder='제목을 입력해주세요' name="companyName" onChange={handleChange} value={formData.title} required /><br /><br />
+                <input className="title_input" type="text" placeholder='제목을 입력해주세요' name="title" onChange={handleChange} value={formData.title} required /><br /><br />
 
                 <div className='margin_bottom'>
                     <label className='job_title'>회사명</label><br />
                     <input type="text" className="title_input" placeholder='한글' name="companyName" onChange={handleChange} value={formData.companyName} required /><br />
                 </div>
-                <input type="text" className="title_input" placeholder='영어' name="companyName" onChange={handleChange} value={formData.companyName_en} required /><br /><br />
+                <input type="text" className="title_input" placeholder='영어' name="companyName_en" onChange={handleChange} value={formData.companyName_en} required /><br /><br />
                 <div className='margin_bottom'>
                     <label className='job_title'>근무지 상세 주소</label><br />
                     <input type="text" className="title_input" placeholder='한글 주소 (도로명)' name="detailAddress" onChange={handleChange} value={formData.detailAddress} required /><br></br>
@@ -1083,7 +1055,7 @@ const JobPostingForm = () => {
                     <div className='sector_container'>
                         <div className="sector-header">
                             <label className='job_title_small'>업종</label><br />
-                            <button className='tap_style' onClick={handleSector}>업종 선택</button>
+                            <button className='tap_style' onClick={handleSector}>{formData.sector===''?"업종선택":formData.sector}</button>
                         </div>
                         {showSector()}
                     </div>

@@ -6,30 +6,11 @@ import { CompanyList2 } from '../components/resultpage/CompanyCard'
 import CompanyCard from '../components/resultpage/CompanyCard'
 import axios from 'axios';
 
-import axios from 'axios'
 import { baseUrl } from '../styles/common'
 
 function ResultPage() {
   const [user, setUser] = useState([])
 
-<<<<<<< HEAD
-  const getUsers = async () => { // 비동기를 동기로 처리하게 해주는 async await 문법 사용
-    const response = await axios.get('http://195job.o-r.kr/api/job-postings', {
-      headers : {
-        'Content-Type' : 'application/json',
-        'ngrok-skip-browser-warning' : '69420',
-      }
-    }).then(res => {console.log(res.data); setUser(res.data)});
-    
-    //setUser(json.data);
-    
-}
-
-
-useEffect(() => {   // API 한번만 받아오도록 useEffect 사용
-  getUsers()
-}, [])
-=======
   useEffect(()=>{
     fetchCompanyList();
   },[]);
@@ -41,10 +22,6 @@ useEffect(() => {   // API 한번만 받아오도록 useEffect 사용
     .catch(err=>console.log(err,"회사리스트 오류"));
 
   }
- 
-  return (
->>>>>>> aef3641c4eb1434a6336284f5458f6fb4492f4fb
-
 
 
 return (

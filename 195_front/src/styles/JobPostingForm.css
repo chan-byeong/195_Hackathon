@@ -158,8 +158,8 @@
 
 .list_style {
     text-align: start;
-    padding-left: 50px;
-    padding-top: 18px;
+    /* padding-left: 50px;
+    padding-top: 18px; */
 }
 
 .list_style2 {
@@ -209,8 +209,13 @@
 
 .job_content {
     margin-bottom: 15px;
-    width: 200px;
+    /*width : 200px*/
+    /*margin-right: auto;*/
+    margin-left : 10px;
+}
 
+.job_content:nth-child(5) {
+    margin-bottom : 0;
 }
 
 .job_content_1 .custom-checkbox  {
@@ -306,9 +311,10 @@
 
     box-sizing: border-box;
 
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 0 20px 0 20px;
+    overflow: hidden;
+
+    height: auto;
+    /* padding: 0 20px 0 20px; */
 
 }
 
