@@ -38,8 +38,8 @@ public class JobPosting {
     @ElementCollection
     private List<String> details;
     private int salary;
-    private boolean isAccommodationProvided;
-    private boolean isFoodProvided;
+    private boolean accommodationProvided;
+    private boolean foodProvided;
 
 
 }

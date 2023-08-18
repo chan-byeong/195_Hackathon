@@ -15,15 +15,15 @@ public interface JobPostingRepository extends JpaRepository<JobPosting, Long> {
             + "(:isEmptySector = true OR j.sector IN :sector) AND "
             + "(:minSalary IS NULL OR j.salary >= :minSalary) AND "
             + "(:maxSalary IS NULL OR j.salary <= :maxSalary) AND "
-            + "(:isFoodProvided IS NULL OR j.isFoodProvided = :isFoodProvided) AND "
-            + "(:isAccommodationProvided IS NULL OR j.isAccommodationProvided = :isAccommodationProvided)")
+            + "(:foodProvided IS NULL OR j.foodProvided = :foodProvided) AND "
+            + "(:accommodationProvided IS NULL OR j.accommodationProvided = :accommodationProvided)")
     List<JobPosting> findJobs(@Param("city") List<String> city,
                               @Param("isEmptyCity") boolean isEmptyCity,
                               @Param("sector") List<String> sector,
                               @Param("isEmptySector") boolean isEmptySector,
                               @Param("minSalary") Integer minSalary,
                               @Param("maxSalary") Integer maxSalary,
-                              @Param("isFoodProvided") Boolean isFoodProvided,
-                              @Param("isAccommodationProvided") Boolean isAccommodationProvided);
+                              @Param("foodProvided") Boolean isFoodProvided,
+                              @Param("accommodationProvided") Boolean isAccommodationProvided);
 
 }

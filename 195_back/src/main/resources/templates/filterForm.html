@@ -22,10 +22,10 @@
     <input type="number" name="maxSalary"><br><br>
 
     <label>식사 제공:</label>
-    <input type="checkbox" name="isFoodProvided" value="true"><br><br>
+    <input type="checkbox" name="foodProvided" value="true"><br><br>
 
     <label>숙소 제공:</label>
-    <input type="checkbox" name="isAccommodationProvided" value="true"><br><br>
+    <input type="checkbox" name="accommodationProvided" value="true"><br><br>
 
     <button type="button" onclick="searchJobs()">검색</button>
 </form>
@@ -41,8 +41,8 @@
       if (form.sector.value) url += 'sector=' + form.sector.value + '&';
       if (form.minSalary.value) url += 'minSalary=' + form.minSalary.value + '&';
       if (form.maxSalary.value) url += 'maxSalary=' + form.maxSalary.value + '&';
-      if (form.isFoodProvided.checked) url += 'isFoodProvided=' + form.isFoodProvided.checked + '&';
-      if (form.isAccommodationProvided.checked) url += 'isAccommodationProvided=' + form.isAccommodationProvided.checked + '&';
+      if (form.foodProvided.checked) url += 'foodProvided=' + form.foodProvided.checked + '&';
+      if (form.accommodationProvided.checked) url += 'accommodationProvided=' + form.accommodationProvided.checked + '&';
 
       // 맨 끝의 & 제거
       url = url.slice(0, -1);
@@ -60,8 +60,8 @@
           <p>${job.sector}</p>
           <p>${job.city}</p>
           <p>${job.salary}원</p>
-          <p>숙박 제공: ${job.isAccommodationProvided ? '제공' : '미제공'}</p>
-          <p>식사 제공: ${job.isFoodProvided ? '제공' : '미제공'}</p>
+          <p>숙박 제공: ${job.accommodationProvided ? '제공' : '미제공'}</p>
+          <p>식사 제공: ${job.foodProvided ? '제공' : '미제공'}</p>
         `).join('');
       } catch (error) {
         console.error('구직 공고 검색에 실패했습니다.', error);

@@ -19,8 +19,8 @@ public class JobPostingRequestBasicInfoDto {
     private String workDays;
     private String workHours;
     private int salary;
-    private boolean isFoodProvided;
-    private boolean isAccommodationProvided;
+    private boolean foodProvided;
+    private boolean accommodationProvided;
 
     @Override
     public String toString() {
@@ -36,8 +36,8 @@ public class JobPostingRequestBasicInfoDto {
                 ", workDays='" + workDays + '\'' +
                 ", workHours='" + workHours + '\'' +
                 ", salary=" + salary +
-                ", isFoodProvided=" + isFoodProvided +
-                ", isAccommodationProvided=" + isAccommodationProvided +
+                ", isFoodProvided=" + foodProvided +
+                ", isAccommodationProvided=" + accommodationProvided +
                 '}';
     }
 }
