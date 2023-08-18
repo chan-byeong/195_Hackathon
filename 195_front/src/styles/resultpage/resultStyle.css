@@ -1,10 +1,11 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
 .filter_div {
     display: flex;
-    margin: 0 auto;
-    justify-content: center;
+    margin-left: 180px;
     height: 40px;
     margin-top: 0px;
-    margin-bottom: 30px
+    margin-bottom: 20px
 }
 
 
@@ -12,28 +13,32 @@
     display: flex;
 
 }
-.text_color{
+
+.text_color {
     color: #31402A;
     font-weight: 500;
 }
-.custom-checkbox input[type="checkbox"] {
-  
-  margin-right: 13px;   
-  appearance: none;
-  border: 1.5px solid #3F5336;
-  border-radius: 0.25rem;
-  width: 18px;
-  height: 18px;
 
-  &:checked {
-    border-color: transparent;
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
-    background-size: 100% 100%;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-color: #3F5336;
-  };
-    
+.custom-checkbox input[type="checkbox"] {
+
+    margin-right: 13px;
+    appearance: none;
+    border: 1.5px solid #3F5336;
+    border-radius: 0.25rem;
+    width: 18px;
+    height: 18px;
+
+    &:checked {
+        border-color: transparent;
+        background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+        background-size: 100% 100%;
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-color: #3F5336;
+    }
+
+    ;
+
 }
 
 
@@ -50,20 +55,35 @@
 .clicked_job {
 
     position: relative;
-    top: 10px;
-    width: 207x;
-    height: 330px;
+    width: 527px;
+    height: 394px;
+    flex-shrink: 0;
 
-    z-index: 900;
-    border: 1px solid #698A5B;
-    box-shadow: 0px 6px 48px rgba(30, 40, 58, 0.08);
-    border-radius: 8px;
-    background-color: #F6FBF0;
+    border-radius: 16px;
+    border: 3px solid #372417;
+    background: #5E3E28;
+    box-shadow: 4px 4px 8px 0px rgba(94, 62, 40, 0.08);
     box-sizing: border-box;
+
+    font-size: 16px;
+    font-weight: 400;
+
 
 }
 
-.job_content{
+
+
+
+.title_style {
+
+    color: #31402A;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 58px;
+}
+
+.job_content {
     margin-bottom: 15px;
 }
 
@@ -73,6 +93,8 @@
 
 }
 
+.padding_bottom {}
+
 .filter_depth1 {
     margin-top: 10px;
     position: absolute;
@@ -81,10 +103,10 @@
     width: 212px;
     box-sizing: border-box;
     border-right: 1px solid #e5e6e9;
-    height: 320px;
+    height: 260px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 20px;
+    padding: 0 20px 0 20px;
 
 }
 
@@ -117,16 +139,17 @@
     height: 20px;
     padding: 20px;
     text-align: right;
-    
+
 }
-.app_style{
+
+.app_style {
     margin-top: 4px;
     margin-left: 60px;
     background-color: #709361;
-    color:#FEFCF0;
+    color: #FEFCF0;
     border-radius: 12px;
     width: 79px;
-    height:30px;
+    height: 30px;
 }
 
 .btn_reset {
@@ -182,12 +205,12 @@
 
 .item_list {
     box-sizing: border-box;
-    
+
     padding: 20px 24px;
 }
 
-.centered_list{
-   margin-left: 10px; 
+.centered_list {
+    margin-left: 10px;
 }
 
 .loc_checkbox {
@@ -195,7 +218,7 @@
     display: inline-block;
     width: calc(33.33% - 20px);
     padding-bottom: 12px;
-    
+
     padding-left: 25px;
     box-sizing: border-box;
 }
@@ -203,7 +226,7 @@
 
 
 .Loc_bottom {
-  
+
     padding: 20px;
     text-align: right;
     border-top: 1px solid #e5e6e9;
@@ -231,14 +254,12 @@
     height: 30px;
 }
 
-.slide_center{
+.slide_center {
     text-align: center;
-    
-}
-
-.wage_slidebar {
 
 }
+
+.wage_slidebar {}
 
 .center {
     text-align: center;
@@ -264,17 +285,18 @@
     line-height: 22px;
     font-weight: 400;
     padding: 5px;
-   
+
     border-radius: 6.5px;
 }
-.wage_title{
+
+.wage_title {
     padding-top: 8px;
     display: flex;
     flex-direction: row;
     padding-left: 150px;
 }
 
-.unit_won{
+.unit_won {
     padding-left: 6px;
     padding-top: 6px;
     font-size: small;
@@ -371,7 +393,7 @@
     line-height: 22px;
     font-weight: 400;
     padding: 5px;
-    
+
     border-radius: 6.5px;
 }
 
@@ -383,7 +405,7 @@
 }
 
 .clicked_accomo {
-    
+
     width: 300px;
     height: 186px;
     border: 1px solid #698A5B;
@@ -400,7 +422,7 @@
     padding-left: 30px;
     margin-bottom: 40px;
     background-color: #F6FBF0;
-    
+
 
 }
 
@@ -467,10 +489,11 @@
     width: 1300px;
     border-top: 2px solid #698A5B;
     border-radius: 2.5px;
-    
+
 
 }
-.company_center{
+
+.company_center {
     margin-left: 100px;
 }
 
@@ -480,22 +503,32 @@
     margin-top: 20px;
     height: 210px;
     flex-wrap: wrap;
-    border-bottom: 1px solid #8cb879;
+
+}
+
+.border_bottom {
+    width: 600px;
+    height: 200px;
+
 }
 
 .item_card {
     display: flex;
-    flex-direction: row;
+
     margin-bottom: 20px;
     width: 600px;
     height: 200px;
     /*border: 1px solid #e5e6e9;
     background-color: #8cb879;*/
-    border-radius: 12px;
+
     overflow: hidden;
     box-sizing: border-box;
+    border-bottom: 3px solid #DBE9D5;
+
+
 }
-.item_card2{
+
+.item_card2 {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
@@ -532,7 +565,7 @@
 .item_card_information {
     padding: 10px 20px 16px 20px;
     padding-top: 15px;
-    
+
 }
 
 
@@ -552,20 +585,20 @@
 }
 
 .colummLine {
-    width: 0.8px;
+    width: 3px;
     /* Adjust the width of the line */
     height: 100%;
     /* Line spans the entire height of the recruitment content */
-    background-color: #8cb879;
+    background-color: #DBE9D5;
     /* Line color */
     position: absolute;
 
-    left: 45%;
+    left: 44%;
     /* Position the line in the center horizontally */
-   
+
 }
 
-.item_card_location{
+.item_card_location {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -577,17 +610,17 @@
     padding: 5px 7px 5px 7px;
     text-align: center;
     margin-bottom: 10px;
-    
+
 }
 
-.item_card_name{
+.item_card_name {
     color: #323438;
     font-weight: 500;
-   
+
     margin-bottom: 20px;
 }
 
-.item_card_wage{
+.item_card_wage {
     background-color: #F8E06C;
     border-radius: 5px;
     color: #323438;
@@ -595,21 +628,31 @@
     width: 120px;
     height: 30px;
     text-align: center;
-    
+
 }
 
-.background_color{
+.background_color {
     background-color: #FFFEF6;
     padding-bottom: 200px;
 }
 
+.salary_style {
+    color: #31402A;
+  
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+   
+    /* 290% */
 
-.company_color{
+}
+
+.company_color {
     color: #3F5336;
-    font-weight:600;
+    font-weight: 600;
     font-size: smaller;
 }
 
-.text_color{
+.text_color {
     color: #31402A;
 }
