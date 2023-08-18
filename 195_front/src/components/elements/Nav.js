@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import {Link , useMatch} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import headerBg from "../../images/header_bg.png"
+import headerGnBg from '../../images/header_gn_bg.png'
+import logo195 from "../../images/195_logo.png";
 
 import { YELLOW , BROWN } from '../../styles/common';
 
-const Nav = () => {
+const Nav = ({main}) => {
 
   const {t , i18n} = useTranslation('header');
   const [selectedLang , setSelectedLang] = useState(t.language);
@@ -16,7 +18,7 @@ const Nav = () => {
   }
   
   return (
-    <Wrapper>
+    <Wrapper main={main}>
       <NavContainer>
 
         <Link to='/'>
@@ -53,16 +55,17 @@ const Nav = () => {
 }
 
 const Wrapper = styled.div`
-  width : 1920px;
-  height : 182px;
-  background-image: url(${headerBg});
+  width : 100%;
+  height : 140px;
+  background-image:url(${props => props.main ? headerBg: headerGnBg}) ;
   background-repeat:  no-repeat;
   background-size : cover;
+  background-position-y : -115px;
 `;
 
 const NavContainer = styled.div`
-  width : 1640px;
-  height : 182px;
+  max-width : 1640px;
+  height : 140px;
   display :flex;
   justify-content : space-between;
   align-items : center;
@@ -71,8 +74,7 @@ const NavContainer = styled.div`
 `;
 
 const NavLogo = styled.div`
-  background-image : url("../../images/logo512.png");
-  background-color : green;
+  background-image : url(${logo195});
   background-size: contain;
   background-position: center;
   width : 234px;

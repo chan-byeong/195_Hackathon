@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 import styled from 'styled-components';
+import { DARKGREEN } from '../../styles/common';
 
 function SliderImg({images}) {
 
@@ -23,7 +24,7 @@ function SliderImg({images}) {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
     cssEase: "linear",
     nextArrow : <NextArrow/>,
@@ -33,6 +34,7 @@ function SliderImg({images}) {
 
   return (  
     <SliderContainer>
+      <Title>기업 이미지</Title>
       <StyledSlide {...settings}>
         {images.map((e,i)=>(
           <SlideContents key={i} >
@@ -47,18 +49,21 @@ function SliderImg({images}) {
 export default SliderImg
 
 const SliderContainer = styled.div`
-  width : 800px;
-  height : 240px;
-  display : flex;
-  align-items : center;
-  margin-top : 20px;
+  height : 450px;
+  //display : flex;
+  //align-items : center;
+  margin-top : 40px;
 
-  background-color : #eee;
+`;
+
+const Title = styled.h2`
+  font-size : 48px;
+  color : ${DARKGREEN};
 `;
 
 const StyledSlide = styled(Slider)`
-  width : 800px;
-  height : 250px;
+  width : 100%;
+  height : 380px;
   display : flex;
   align-items : center;
 
@@ -98,15 +103,15 @@ const Prev = styled.div`
 `;
 
 const SlideContents = styled.div`
-  width: 290px;
-  height: 190px;
+  width: 527px;
+  height: 300px;
 `;
 
 const ImgBox = styled.div`
   background-image: url(${props => props.src});
-  background-size: cover;
-  width: 290px;
-  height: 190px;
+  background-size: contain;
+  width: 517px;
+  height: 300px;
   border : 1px solid black; 
   border-radius: 20px;
 `;

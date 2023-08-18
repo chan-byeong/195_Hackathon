@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DARKGREEN } from '../../styles/common';
 
 
 function Location({location}) {
@@ -17,14 +18,13 @@ function Location({location}) {
 export default Location
 
 const Wrapper = styled.div`
-  width : 800px;
-  height : 400px;
 
+  height : 620px;
   border-radius : 5px;
   margin-top : 20px;
 
   position : relative;
-  background-color : #eee;
+  //background-color : #eee;
 `;
 
 const LocationInfo = styled.div`
@@ -32,20 +32,20 @@ const LocationInfo = styled.div`
   padding-bottom : 20px;
 
   & > h2 {
-    font-size : 25px;
-    font-weight : 700;
+    font-size : 48px;
+    color : ${DARKGREEN};
   }
 
   & > p {
-    font-size : 16px;
+    font-size : 29px;
   }
 `;
 
 const MapBox = styled.div`
-  width : 780px;
-  height : 250px;
-  background-color : #fff;
-  border-radius : 5px;
+  width : 1600px;
+  height : 430px;
+  background-color : #eee;
+  border-radius : 15px;
 
   position : absolute;
   left: 50%;
