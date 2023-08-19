@@ -4,12 +4,14 @@ import com._hackaton._back.domain.JobPosting;
 import com._hackaton._back.dto.JobPostingRequestBasicInfoDto;
 import com._hackaton._back.dto.JobPostingRequestFileDto;
 import com._hackaton._back.service.JobPostingService;
+import com._hackaton._back.translation.TranslationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JobPostingController {
 
+    private final TranslationService translationService;
     private final JobPostingService jobPostingService;
 
     /**
@@ -52,6 +55,22 @@ public class JobPostingController {
         return ResponseEntity.ok(jobPosting);
     }
 
+    @GetMapping(value = "/one-job-postingen/{id}")
+    public ResponseEntity<JobPosting> getOneJobPostingEn(@PathVariable Long id){
+        JobPosting jobPosting = jobPostingService.getOneJobPosting(id);
+        jobPosting.setTitle(translationService.getTransSentence(jobPosting.getTitle(),"en"));
+        jobPosting.setWorkDays(translationService.getTransSentence(jobPosting.getWorkDays(),"en"));
+        return ResponseEntity.ok(jobPosting);
+    }
+
+    @GetMapping(value = "/one-job-postingcn/{id}")
+    public ResponseEntity<JobPosting> getOneJobPostingCn(@PathVariable Long id){
+        JobPosting jobPosting = jobPostingService.getOneJobPosting(id);
+        jobPosting.setTitle(translationService.getTransSentence(jobPosting.getTitle(),"zh-CN"));
+        jobPosting.setWorkDays(translationService.getTransSentence(jobPosting.getWorkDays(),"zh-CN"));
+        return ResponseEntity.ok(jobPosting);
+    }
+
     /**
      * HTTP GET 요청을 통해 모든 JobPosting 객체를 조회합니다.
      *
@@ -61,6 +80,36 @@ public class JobPostingController {
     public ResponseEntity<List<JobPosting>> getAllJobPostings() {
         List<JobPosting> jobPostings = jobPostingService.getAllJobPostings();
         return ResponseEntity.ok(jobPostings);
+    }
+
+    @GetMapping(value = "/job-postingsen")
+    public ResponseEntity<List<JobPosting>> getAllJobPostingsEn() {
+        List<JobPosting> jobPostings = jobPostingService.getAllJobPostings();
+        List<JobPosting> jobPostingsEn = new ArrayList<>();
+
+        for (JobPosting j: jobPostings) {
+            j.setTitle(translationService.getTransSentence(j.getTitle(), "en"));
+            j.setWorkDays(translationService.getTransSentence(j.getWorkDays(),"en"));
+            jobPostingsEn.add(j);
+
+        }
+
+        return ResponseEntity.ok(jobPostingsEn);
+    }
+
+    @GetMapping(value = "/job-postingsCn")
+    public ResponseEntity<List<JobPosting>> getAllJobPostingsCn() {
+        List<JobPosting> jobPostings = jobPostingService.getAllJobPostings();
+        List<JobPosting> jobPostingsEn = new ArrayList<>();
+
+        for (JobPosting j: jobPostings) {
+            j.setTitle(translationService.getTransSentence(j.getTitle(), "zh-CN"));
+            j.setWorkDays(translationService.getTransSentence(j.getWorkDays(),"zh-CN"));
+            jobPostingsEn.add(j);
+
+        }
+
+        return ResponseEntity.ok(jobPostingsEn);
     }
 
     /**

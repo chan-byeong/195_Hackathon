@@ -41,8 +41,8 @@
       if (form.sector.value) url += 'sector=' + form.sector.value + '&';
       if (form.minSalary.value) url += 'minSalary=' + form.minSalary.value + '&';
       if (form.maxSalary.value) url += 'maxSalary=' + form.maxSalary.value + '&';
-      if (form.foodProvided.checked) url += 'foodProvided=' + form.foodProvided.checked + '&';
-      if (form.accommodationProvided.checked) url += 'accommodationProvided=' + form.accommodationProvided.checked + '&';
+      url += 'foodProvided=' + form.foodProvided.checked + '&'; // 체크 여부에 따른 true/false 추가
+      url += 'accommodationProvided=' + form.accommodationProvided.checked + '&'; // 체크 여부에 따른 true/false 추가
 
       // 맨 끝의 & 제거
       url = url.slice(0, -1);

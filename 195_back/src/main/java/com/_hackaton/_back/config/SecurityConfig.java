@@ -28,17 +28,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf().disable();
-        http.authorizeRequests()
-                .antMatchers("/ceo/**").authenticated() //이 주소로 들어오면 인증이 필요. 컨트롤러에서 @Secured("ROLE_ADMIN") 등으로 설정 가능
+        http.authorizeRequests()//이 주소로 들어오면 인증이 필요. 컨트롤러에서 @Secured("ROLE_ADMIN") 등으로 설정 가능
+                .antMatchers("/adminMain").authenticated()
+                .antMatchers("/register").authenticated()
                 .anyRequest().permitAll() // 해당 url이 아닌 경우 모두 허용한다는 코드
                 .and()
                 .headers().frameOptions().disable() // 이 부분에서 추가
                 .and()
                 .formLogin()//일반적인 로그인 방식의 성공, 실패처리를 사용
                 //.usernameParameter("setusernamepar")
-                .loginPage("/loginForm") //사용자가 따로 만든 로그인 페이지를 사용하려고 할때 설정한다.
+                .loginPage("/") //사용자가 따로 만든 로그인 페이지를 사용하려고 할때 설정한다.
                 .loginProcessingUrl("/login")//login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인을 진행해줌
-                .defaultSuccessUrl("/afterLogin") //로그인 성공시 주소
+                .defaultSuccessUrl("/") //로그인 성공시 주소
                 .and()
                 .oauth2Login()
                 .defaultSuccessUrl("/") //로그인 성공시 주소
