@@ -28,16 +28,20 @@ Web
 
 ### 📄 프로젝트 배경
 
-**al-T**는 사용자들이 더 현명하고 안전하게 또 재밌게 음주를 기록하고 관리할 수 있도록 돕기 위해 개발한 웹 기반 애플리케이션입니다.
+**195**는 모국어 구인/구직 플랫폼 제공과 고용 법적 절차 안내를 통합한 이주 노동자와 고용주를 위한 고용 중개 플랫폼입니다.
 
 ### ✨ 프로젝트 구현 기능
 
-- 기능 1: 혈중 알코올 농도(BAC: Blood Alcohol Concentration) 예측 및 측정
-- 기능 2: 술친구, 술자리 만들기 시스템
-- 기능 3: 마이페이지
-- 기능 4: 음주 기록 관리 시스템
-- 기능 5: 소셜 로그인 기능
-  
+- 기능 1: 공고 글 작성 기능
+- 기능 2: 공고 게시판 기능
+- 기능 3: 로그인 기능
+- 기능 4: 번역 기능
+- 기능 5: 사업자 번호 인증 기능
+
+![image](https://github.com/user-attachments/assets/2010ecff-7f1b-4990-b838-762853ab6434)
+![image](https://github.com/user-attachments/assets/e93f6998-67b6-4b69-8148-86d7709d1fbc)
+![image](https://github.com/user-attachments/assets/5f441b64-c641-4254-89e7-467416573d39)
+![image](https://github.com/user-attachments/assets/6e98db7e-5854-4e54-ae7d-b75692b1b2d0)
 
 # 📖 Project Technologies
 ### 📝 사용된 기술 및 소프트웨어
@@ -60,7 +64,3 @@ Web
 버전 관리 및 협업 도구<br>
 <img src="https://img.shields.io/badge/git-F05032?style=flat-square&logo=git&logoColor=white"/> <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white"/> <img src="https://img.shields.io/badge/Notion-000000?style=flat-square&logo=Notion&logoColor=white"/> <img src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/> 
 
-
-### 📜 ERD Table
-
-### 📋 API Table
